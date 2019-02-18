@@ -1,12 +1,13 @@
 import IntervalFilter from '../src/bulma/IntervalFilter.vue';
 import DateFilter from '../src/bulma/DateFilter.vue';
 import DateIntervalFilter from '../src/bulma/DateIntervalFilter.vue';
+import VueFilter from '../src/bulma/VueFilter.vue';
 import EnsoIntervalFilter from '../src/bulma/EnsoIntervalFilter.vue';
 import EnsoDateFilter from '../src/bulma/EnsoDateFilter.vue';
 import EnsoDateIntervalFilter from '../src/bulma/EnsoDateIntervalFilter.vue';
-import VueFilter from '../src/bulma/VueFilter.vue';
+import EnsoVueFilter from '../src/bulma/EnsoVueFilter.vue';
 
 export {
     IntervalFilter, EnsoIntervalFilter, DateFilter, EnsoDateFilter,
-    DateIntervalFilter, EnsoDateIntervalFilter, VueFilter,
+    DateIntervalFilter, EnsoDateIntervalFilter, VueFilter, EnsoVueFilter,
 };

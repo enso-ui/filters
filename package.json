@@ -12,7 +12,10 @@
   },
   "keywords": [
     "filters",
-    "vue"
+    "vue",
+    "renderless",
+    "bulma",
+    "filter"
   ],
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
