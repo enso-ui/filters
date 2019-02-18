@@ -4,8 +4,9 @@ import DateIntervalFilter from '../src/bulma/DateIntervalFilter.vue';
 import EnsoIntervalFilter from '../src/bulma/EnsoIntervalFilter.vue';
 import EnsoDateFilter from '../src/bulma/EnsoDateFilter.vue';
 import EnsoDateIntervalFilter from '../src/bulma/EnsoDateIntervalFilter.vue';
+import VueFilter from '../src/bulma/VueFilter.vue';
 
 export {
     IntervalFilter, EnsoIntervalFilter, DateFilter, EnsoDateFilter,
-    DateIntervalFilter, EnsoDateIntervalFilter,
+    DateIntervalFilter, EnsoDateIntervalFilter, VueFilter,
 };
