@@ -15,9 +15,9 @@
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
-                        <div v-if="!custom"
+                        <div class="tags-wrapper has-text-centered"
                             key="tags"
-                            class="tags-wrapper has-text-centered animated">
+                            v-if="!custom">
                             <div class="filter-tags">
                                 <span class="tag"
                                     :class="{ 'is-warning': filter === key }"
