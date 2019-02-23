@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laravel-enso/filters.git"
+    "url": "git+https://github.com/enso-ui/filters.git"
   },
   "keywords": [
     "filters",
@@ -20,9 +20,9 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/laravel-enso/filters/issues"
+    "url": "https://github.com/enso-ui/filters/issues"
   },
-  "homepage": "https://github.com/laravel-enso/filters#readme",
+  "homepage": "https://github.com/enso-ui/filters#readme",
   "devDependencies": {
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.1",
