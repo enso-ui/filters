@@ -41,7 +41,7 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import Datepicker from '@enso-ui/datepicker/bulma';
+import { Datepicker } from '@enso-ui/datepicker/bulma';
 import RenderlessDateIntervalFilter from '../renderless/DateIntervalFilter.vue';
 
 export default {

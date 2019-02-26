@@ -75,7 +75,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
-import Datepicker from '@enso-ui/datepicker/bulma';
+import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
 import RenderlessDateFilter from '../renderless/DateFilter.vue';
 
