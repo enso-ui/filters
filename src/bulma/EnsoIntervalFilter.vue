@@ -1,7 +1,7 @@
 <template>
-    <interval-filter v-bind="$attrs"
-        v-on="$listeners"
-        :i18n="__"/>
+    <interval-filter :i18n="__"
+        v-bind="$attrs"
+        v-on="$listeners"/>
 </template>
 
 <script>

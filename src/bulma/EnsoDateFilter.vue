@@ -24,11 +24,6 @@ export default {
     computed: {
         ...mapState(['meta']),
         ...mapGetters('preferences', ['lang']),
-        title() {
-            return this.custom
-                ? this.i18n('Between')
-                : this.i18n('When');
-        },
     },
 };
 
