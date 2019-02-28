@@ -1,0 +1,36 @@
+<template>
+    <core-select-filter
+        :i18n="__"
+        :itle="title">
+        <enso-select v-tooltip="compact ? __(title) : null"
+            class="select-wrapper"
+            :class="{'has-background-light': compact}"
+            :title="title"
+            v-bind="$attrs"
+            v-on="$listeners"/>
+    </core-select-filter>
+</template>
+
+<script>
+import { VTooltip } from 'v-tooltip';
+import { EnsoSelect } from '@enso-ui/select/bulma';
+import CoreSelectFilter from './CoreSelectFilter.vue';
+
+export default {
+    directives: { tooltip: VTooltip },
+
+    components: { CoreSelectFilter, EnsoSelect },
+
+    props: {
+        compact: {
+            type: Boolean,
+            default: false,
+        },
+        title: {
+            type: String,
+            default: null,
+        },
+    },
+};
+
+</script>

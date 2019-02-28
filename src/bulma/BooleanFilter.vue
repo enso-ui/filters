@@ -1,7 +1,6 @@
 <template>
     <vue-filter icons
         :options="options"
-        :value="value"
         v-bind="$attrs"
         v-on="$listeners"/>
 </template>
