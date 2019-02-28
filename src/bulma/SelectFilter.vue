@@ -1,5 +1,7 @@
 <template>
-    <core-select-filter>
+    <core-select-filter :compact="compact"
+        :i18n="i18n"
+        :title="title">
         <vue-select v-tooltip="compact ? i18n(title) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"

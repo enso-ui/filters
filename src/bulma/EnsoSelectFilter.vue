@@ -1,7 +1,7 @@
 <template>
-    <core-select-filter
+    <core-select-filter :compact="compact"
         :i18n="__"
-        :itle="title">
+        :title="title">
         <enso-select v-tooltip="compact ? __(title) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"
