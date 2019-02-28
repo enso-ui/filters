@@ -7,11 +7,11 @@ import BooleanFilter from '../src/bulma/BooleanFilter.vue';
 import EnsoIntervalFilter from '../src/bulma/EnsoIntervalFilter.vue';
 import EnsoDateFilter from '../src/bulma/EnsoDateFilter.vue';
 import EnsoDateIntervalFilter from '../src/bulma/EnsoDateIntervalFilter.vue';
-import EnsoVueFilter from '../src/bulma/EnsoVueFilter.vue';
+import EnsoFilter from '../src/bulma/EnsoFilter.vue';
 import EnsoSelectFilter from '../src/bulma/EnsoSelectFilter.vue';
 
 export {
     IntervalFilter, EnsoIntervalFilter, DateFilter, EnsoDateFilter,
     DateIntervalFilter, EnsoDateIntervalFilter, BooleanFilter,
-    VueFilter, EnsoVueFilter, SelectFilter, EnsoSelectFilter,
+    VueFilter, EnsoFilter, SelectFilter, EnsoSelectFilter,
 };
