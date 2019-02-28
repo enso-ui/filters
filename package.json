@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/filters",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Renderless Vue Filter Components",
   "main": "index.js",
   "scripts": {
