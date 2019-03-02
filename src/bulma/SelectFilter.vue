@@ -18,6 +18,8 @@ import { VueSelect } from '@enso-ui/select/bulma';
 import CoreSelectFilter from './CoreSelectFilter.vue';
 
 export default {
+    name: 'SelectFilter',
+
     directives: { tooltip: VTooltip },
 
     components: { CoreSelectFilter, VueSelect },
@@ -37,5 +39,4 @@ export default {
         },
     },
 };
-
 </script>

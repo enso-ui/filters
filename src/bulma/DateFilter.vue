@@ -1,8 +1,9 @@
 <template>
-    <renderless-date-filter :format="format"
+    <core-date-filter v-bind="$attrs"
         v-on="$listeners">
         <template v-slot:default="{
-                interval, filter, custom, equals, filters, update, setFilter
+                filters, filter, custom, minBindings, minEvents,
+                maxBindings, maxEvents, backEvents, filterEvents,
             }">
             <div class="date-filter is-paddingless">
                 <div class="header has-text-centered has-background-light"
@@ -23,7 +24,7 @@
                                     :class="{ 'is-warning': filter === key }"
                                     v-for="(type, key) in filters"
                                     :key="key"
-                                    @click="setFilter(key)">
+                                    v-on="filterEvents(key)">
                                     {{ i18n(type) }}
                                 </span>
                             </div>
@@ -35,30 +36,20 @@
                                 <div class="column is-narrow">
                                     <a class="button is-naked">
                                         <span class="icon is-small"
-                                            @click="setFilter('today')">
+                                            v-on="backEvents">
                                             <fa icon="arrow-left"/>
                                         </span>
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <datepicker v-model="interval.min"
-                                        :format="format"
-                                        :is-warning="equals"
-                                        :locale="locale"
-                                        :placeholder="i18n('From')"
-                                        :disabled="!custom"
-                                        :max="interval.max"
-                                        @input="update()"/>
+                                    <datepicker :placeholder="i18n('From')"
+                                        v-bind="minBindings"
+                                        v-on="minEvents"/>
                                 </div>
                                 <div class="column">
-                                    <datepicker v-model="interval.max"
-                                        :format="format"
-                                        :is-warning="equals"
-                                        :locale="locale"
-                                        :placeholder="i18n('To')"
-                                        :disabled="!custom"
-                                        :min="interval.min"
-                                        @input="update()"/>
+                                    <datepicker :placeholder="i18n('To')"
+                                        v-bind="maxBindings"
+                                        v-on="maxEvents"/>
                                 </div>
                             </div>
                         </div>
@@ -66,42 +57,34 @@
                 </div>
             </div>
         </template>
-    </renderless-date-filter>
+    </core-date-filter>
 </template>
 
 <script>
-
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
-import RenderlessDateFilter from '../renderless/DateFilter.vue';
+import CoreDateFilter from '../renderless/DateFilter.vue';
 
 library.add(faArrowLeft);
 
 export default {
+    name: 'DateFilter',
+
     directives: { tooltip: VTooltip },
 
-    components: { RenderlessDateFilter, Fade, Datepicker },
+    components: { CoreDateFilter, Fade, Datepicker },
 
     props: {
         compact: {
             type: Boolean,
             default: false,
         },
-        format: {
-            type: String,
-            default: 'd-m-Y',
-        },
         i18n: {
             type: Function,
             default: v => v,
-        },
-        locale: {
-            type: String,
-            default: 'en',
         },
     },
 
@@ -113,11 +96,9 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="scss">
-
     .date-filter {
         .header {
             border-top-left-radius: inherit;
@@ -142,5 +123,4 @@ export default {
             }
         }
     }
-
 </style>

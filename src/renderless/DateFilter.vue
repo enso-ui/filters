@@ -1,5 +1,4 @@
 <script>
-
 import {
     addDays, format, subDays, subMonths, subWeeks,
 } from 'date-fns';
@@ -76,15 +75,44 @@ export default {
 
     render() {
         return this.$scopedSlots.default({
-            interval: this.interval,
+            minBindings: {
+                value: this.interval.min,
+                format: this.format,
+                isWarning: this.equals,
+                locale: this.locale,
+                disabled: !this.custom,
+                max: this.interval.max,
+            },
+            minEvents: {
+                input: (e) => {
+                    this.interval.min = e;
+                    this.update();
+                },
+            },
+            maxBindings: {
+                value: this.interval.max,
+                format: this.format,
+                isWarning: this.equals,
+                locale: this.locale,
+                disabled: !this.custom,
+                min: this.interval.min,
+            },
+            maxEvents: {
+                input: (e) => {
+                    this.interval.max = e;
+                    this.update();
+                },
+            },
+            backEvents: {
+                click: () => this.setFilter('today'),
+            },
+            filterEvents: type => ({
+                click: () => this.setFilter(type),
+            }),
+            filters: this.filters,
             filter: this.filter,
             custom: this.custom,
-            equals: this.equals,
-            filters: this.filters,
-            update: this.update,
-            setFilter: this.setFilter,
         });
     },
 };
-
 </script>

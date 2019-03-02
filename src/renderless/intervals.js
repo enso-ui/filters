@@ -6,14 +6,16 @@ export default {
             type: String,
             default: 'd-m-Y',
         },
-    },
-
-    data: () => ({
         interval: {
-            min: null,
-            max: null,
+            type: Object,
+            default: () => ({
+                min: null,
+                max: null,
+            }),
+            validator: v => Object.keys(v).includes('min')
+                && Object.keys(v).includes('max'),
         },
-    }),
+    },
 
     computed: {
         alternateFormat() {

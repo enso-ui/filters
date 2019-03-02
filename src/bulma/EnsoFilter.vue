@@ -5,11 +5,11 @@
 </template>
 
 <script>
-
 import VueFilter from './VueFilter.vue';
 
 export default {
+    name: 'VueFilter',
+
     components: { VueFilter },
 };
-
 </script>

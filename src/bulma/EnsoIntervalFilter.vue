@@ -5,11 +5,11 @@
 </template>
 
 <script>
-
 import IntervalFilter from './IntervalFilter.vue';
 
 export default {
+    name: 'IntervalFilter',
+
     components: { IntervalFilter },
 };
-
 </script>

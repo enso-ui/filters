@@ -7,11 +7,12 @@
 </template>
 
 <script>
-
 import { mapState, mapGetters } from 'vuex';
 import EnsoDateFilter from './EnsoDateFilter.vue';
 
 export default {
+    name: 'DateIntervalFilter',
+
     components: { EnsoDateFilter },
 
     props: {
@@ -26,5 +27,4 @@ export default {
         ...mapGetters('preferences', ['lang']),
     },
 };
-
 </script>

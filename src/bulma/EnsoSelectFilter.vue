@@ -17,6 +17,8 @@ import { EnsoSelect } from '@enso-ui/select/bulma';
 import CoreSelectFilter from './CoreSelectFilter.vue';
 
 export default {
+    name: 'SelectFilter',
+
     directives: { tooltip: VTooltip },
 
     components: { CoreSelectFilter, EnsoSelect },

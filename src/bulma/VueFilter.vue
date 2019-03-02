@@ -20,7 +20,7 @@
                         <a @click="update(option.value)">
                             <span v-if="icons"
                                 :class="['icon', option.class]">
-                                <fa :icon="option.label"/>
+                                <fa :icon="option.icon"/>
                             </span>
                             <span v-else
                                 class="filter-label"
@@ -32,12 +32,8 @@
                     <li v-if="!hideOff"
                         :class="{ 'is-active': value === null }">
                         <a @click="update()">
-                            <span :class="[
-                                    'icon',
-                                    value === null
-                                        ? 'has-text-danger'
-                                        : 'has-text-success'
-                                ]">
+                            <span class="icon"
+                                :class="value === null ? 'has-text-danger' : 'has-text-success'">
                                 <fa icon="power-off"/>
                             </span>
                             <span v-if="!icons && offLabel"
@@ -53,7 +49,6 @@
 </template>
 
 <script>
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';

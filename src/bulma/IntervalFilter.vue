@@ -1,6 +1,10 @@
 <template>
-    <renderless-interval-filter v-on="$listeners">
-        <template v-slot:default="{ interval, invalid, update }">
+    <core-interval-filter v-bind="$attrs"
+        v-on="$listeners">
+        <template v-slot:default="{
+                interval, invalid, minBindings, minEvents, maxBindings,
+                maxEvents, minClearEvents, maxClearEvents,
+            }">
             <div class="interval-filter is-paddingless">
                 <div v-if="!compact"
                     class="header has-text-centered has-background-light">
@@ -11,30 +15,28 @@
                     <div class="columns is-mobile">
                         <div class="column">
                             <div class="control has-icons-right">
-                                <input v-model="interval.min"
-                                    class="input control"
+                                <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
                                     :placeholder="i18n(minLabel)"
-                                    :type="type"
-                                    @input="update">
+                                    :v-bind="minBindings"
+                                    :v-on="minEvents">
                                 <span v-if="interval.min"
                                     class="icon is-small is-right clear-button"
-                                    @click="interval.min = null; update()">
+                                    v-on="minClearEvents">
                                     <a class="delete is-small"/>
                                 </span>
                             </div>
                         </div>
                         <div class="column">
                             <div class="control has-icons-right">
-                                <input v-model="interval.max"
-                                    class="input control"
+                                <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
                                     :placeholder="i18n(maxLabel)"
-                                    :type="type"
-                                    @input="update">
+                                    :v-bind="maxBindings"
+                                    :v-on="maxEvents">
                                 <span v-if="interval.max"
                                     class="icon is-small is-right clear-button"
-                                    @click="interval.max = null; update()">
+                                    v-on="maxClearEvents">
                                     <a class="delete is-small"/>
                                 </span>
                             </div>
@@ -43,18 +45,19 @@
                 </div>
             </div>
         </template>
-    </renderless-interval-filter>
+    </core-interval-filter>
 </template>
 
 <script>
-
 import { VTooltip } from 'v-tooltip';
-import RenderlessIntervalFilter from '../renderless/IntervalFilter.vue';
+import CoreIntervalFilter from '../renderless/IntervalFilter.vue';
 
 export default {
+    name: 'IntervalFilter',
+
     directives: { tooltip: VTooltip },
 
-    components: { RenderlessIntervalFilter },
+    components: { CoreIntervalFilter },
 
     props: {
         compact: {
@@ -77,17 +80,11 @@ export default {
             type: String,
             default: null,
         },
-        type: {
-            type: String,
-            default: 'number',
-        },
     },
 };
-
 </script>
 
 <style lang="scss">
-
     .interval-filter {
         .header {
             border-top-left-radius: inherit;
@@ -104,5 +101,4 @@ export default {
             pointer-events: all;
         }
     }
-
 </style>

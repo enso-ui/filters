@@ -1,7 +1,7 @@
 <template>
-    <renderless-date-interval-filter :format="format"
+    <core-date-interval-filter v-bind="$attrs"
         v-on="$listeners">
-        <template v-slot:default="{ interval, equals, update }">
+        <template v-slot:default="{ minBindings, minEvents, maxBindings, maxEvents }">
             <div class="date-interval-filter is-paddingless">
                 <div class="header has-background-light has-text-centered"
                     v-if="!compact">
@@ -14,57 +14,43 @@
                     :class="{ 'has-background-light': compact }">
                     <div class="columns is-mobile is-variable is-1 is-centered">
                         <div class="column">
-                            <datepicker v-model="interval.min"
-                                :format="format"
-                                :is-warning="equals"
-                                :locale="locale"
-                                :placeholder="i18n(minLabel)"
-                                :max="interval.max"
-                                @input="update"/>
+                            <datepicker :placeholder="i18n(minLabel)"
+                                v-bind="minBindings"
+                                v-on="minEvents"/>
                         </div>
                         <div class="column">
-                            <datepicker v-model="interval.max"
-                                :format="format"
-                                :is-warning="equals"
-                                :locale="locale"
-                                :placeholder="i18n(maxLabel)"
-                                :min="interval.min"
+                            <datepicker :placeholder="i18n(maxLabel)"
+                                v-bind="minBindings"
+                                v-on="minEvents"
                                 @input="update"/>
                         </div>
                     </div>
                 </div>
             </div>
         </template>
-    </renderless-date-interval-filter>
+    </core-date-interval-filter>
 </template>
 
 <script>
-
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
-import RenderlessDateIntervalFilter from '../renderless/DateIntervalFilter.vue';
+import CoreDateIntervalFilter from '../renderless/DateIntervalFilter.vue';
 
 export default {
+    name: 'DateIntervalFilter',
+
     directives: { tooltip: VTooltip },
 
-    components: { RenderlessDateIntervalFilter, Datepicker },
+    components: { CoreDateIntervalFilter, Datepicker },
 
     props: {
         compact: {
             type: Boolean,
             default: false,
         },
-        format: {
-            type: String,
-            default: 'd-m-Y',
-        },
         i18n: {
             type: Function,
             default: v => v,
-        },
-        locale: {
-            type: String,
-            default: 'en',
         },
         maxLabel: {
             type: String,
@@ -87,7 +73,6 @@ export default {
         },
     }),
 };
-
 </script>
 
 <style lang="scss">

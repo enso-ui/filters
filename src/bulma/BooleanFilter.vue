@@ -10,16 +10,18 @@
 import VueFilter from './VueFilter.vue';
 
 export default {
+    name: 'BooleanFilter',
+
     components: { VueFilter },
 
     data: () => ({
         options: [{
             value: true,
-            label: 'check',
+            icon: 'check',
             class: 'has-text-success',
         }, {
             value: false,
-            label: 'times',
+            icon: 'times',
             class: 'has-text-danger',
         }],
     }),

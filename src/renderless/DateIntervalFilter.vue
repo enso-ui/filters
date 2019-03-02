@@ -13,9 +13,32 @@ export default {
 
     render() {
         return this.$scopedSlots.default({
-            interval: this.interval,
-            equals: this.equals,
-            update: this.update,
+            minBindings: {
+                value: this.interval.min,
+                format: this.format,
+                isWarning: this.equals,
+                locale: this.locale,
+                max: this.interval.max,
+            },
+            minEvents: {
+                input: (e) => {
+                    this.interval.min = e;
+                    this.update();
+                },
+            },
+            maxBindings: {
+                value: this.interval.max,
+                format: this.format,
+                isWarning: this.equals,
+                locale: this.locale,
+                min: this.interval.min,
+            },
+            maxEvents: {
+                input: (e) => {
+                    this.interval.max = e;
+                    this.update();
+                },
+            },
         });
     },
 };
