@@ -8,7 +8,7 @@
 import IntervalFilter from './IntervalFilter.vue';
 
 export default {
-    name: 'IntervalFilter',
+    name: 'EnsoIntervalFilter',
 
     components: { IntervalFilter },
 };

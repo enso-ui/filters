@@ -11,7 +11,7 @@ import { mapState, mapGetters } from 'vuex';
 import DateFilter from './DateFilter.vue';
 
 export default {
-    name: 'DateFilter',
+    name: 'EnsoDateFilter',
 
     components: { DateFilter },
 

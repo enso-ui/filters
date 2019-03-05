@@ -15,6 +15,10 @@ export default {
             validator: v => Object.keys(v).includes('min')
                 && Object.keys(v).includes('max'),
         },
+        locale: {
+            type: String,
+            default: 'en',
+        },
     },
 
     computed: {

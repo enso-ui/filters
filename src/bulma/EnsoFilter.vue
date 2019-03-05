@@ -8,7 +8,7 @@
 import VueFilter from './VueFilter.vue';
 
 export default {
-    name: 'VueFilter',
+    name: 'EnsoFilter',
 
     components: { VueFilter },
 };
