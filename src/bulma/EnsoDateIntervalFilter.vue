@@ -1,6 +1,6 @@
 <template>
     <enso-date-filter :format="format || meta.jsDateFormat"
-        :i18n="__"
+        :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"
         v-on="$listeners"/>
@@ -12,6 +12,8 @@ import EnsoDateFilter from './EnsoDateFilter.vue';
 
 export default {
     name: 'EnsoDateIntervalFilter',
+
+    inject: ['i18n'],
 
     components: { EnsoDateFilter },
 

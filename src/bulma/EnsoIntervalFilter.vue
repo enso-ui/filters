@@ -1,5 +1,5 @@
 <template>
-    <interval-filter :i18n="__"
+    <interval-filter :i18n="i18n"
         v-bind="$attrs"
         v-on="$listeners"/>
 </template>
@@ -11,5 +11,7 @@ export default {
     name: 'EnsoIntervalFilter',
 
     components: { IntervalFilter },
+
+    inject: ['i18n'],
 };
 </script>

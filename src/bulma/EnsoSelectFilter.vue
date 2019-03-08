@@ -1,8 +1,8 @@
 <template>
     <core-select-filter :compact="compact"
-        :i18n="__"
+        :i18n="i18n"
         :title="title">
-        <enso-select v-tooltip="compact ? __(title) : null"
+        <enso-select v-tooltip="compact ? i18n(title) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"
             :title="title"
@@ -22,6 +22,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: { CoreSelectFilter, EnsoSelect },
+
+    inject: ['i18n'],
 
     props: {
         compact: {
