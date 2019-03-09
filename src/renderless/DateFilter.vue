@@ -1,18 +1,17 @@
 <script>
-import {
-    addDays, format, subDays, subMonths, subWeeks,
-} from 'date-fns';
-
-import intervals from './intervals';
+import { addDays, format, subDays } from 'date-fns';
+import dateIntervals from './dateIntervals';
 
 export default {
-    mixins: [intervals],
+    name: 'CoreDateFilter',
+
+    mixins: [dateIntervals],
 
     props: {
         default: {
             type: String,
             default: 'today',
-            validator: v => ['today', 'yesterday', 'last week', 'last month', 'all']
+            validator: v => ['today', 'yesterday', '7 days', '30 days', 'all']
                 .includes(v),
         },
     },
@@ -21,8 +20,8 @@ export default {
         filters: {
             today: 'today',
             yesterday: 'yesterday',
-            lastWeek: 'last week',
-            lastMonth: 'last month',
+            sevenDays: '7 days',
+            thirtyDays: '30 days',
             custom: 'custom',
             all: 'all',
         },
@@ -63,12 +62,12 @@ export default {
             this.interval.min = format(subDays(new Date(), 1), this.alternateFormat);
             this.interval.max = format(new Date(), this.alternateFormat);
         },
-        lastWeek() {
-            this.interval.min = format(subWeeks(new Date(), 1), this.alternateFormat);
+        sevenDays() {
+            this.interval.min = format(subDays(new Date(), 7), this.alternateFormat);
             this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
         },
-        lastMonth() {
-            this.interval.min = format(subMonths(new Date(), 1), this.alternateFormat);
+        thirtyDays() {
+            this.interval.min = format(subDays(new Date(), 30), this.alternateFormat);
             this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
         },
     },

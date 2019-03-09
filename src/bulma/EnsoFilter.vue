@@ -10,8 +10,8 @@ import VueFilter from './VueFilter.vue';
 export default {
     name: 'EnsoFilter',
 
-    inject: ['i18n'],
-
     components: { VueFilter },
+
+    inject: ['i18n'],
 };
 </script>

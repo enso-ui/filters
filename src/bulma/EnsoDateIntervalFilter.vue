@@ -13,9 +13,9 @@ import EnsoDateFilter from './EnsoDateFilter.vue';
 export default {
     name: 'EnsoDateIntervalFilter',
 
-    inject: ['i18n'],
-
     components: { EnsoDateFilter },
+
+    inject: ['i18n'],
 
     props: {
         format: {

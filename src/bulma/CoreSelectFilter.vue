@@ -12,6 +12,8 @@
 import { VTooltip } from 'v-tooltip';
 
 export default {
+    name: 'CoreSelectFilter',
+
     directives: { tooltip: VTooltip },
 
     props: {
@@ -37,7 +39,6 @@ export default {
 </script>
 
 <style lang="scss">
-
     .vue-filter {
         .header {
             border-top-left-radius: inherit;
@@ -49,5 +50,4 @@ export default {
             padding: 0.25em;
         }
     }
-
 </style>

@@ -1,5 +1,7 @@
 <script>
 export default {
+    name: 'CoreIntervalFilter',
+
     props: {
         interval: {
             type: Object,

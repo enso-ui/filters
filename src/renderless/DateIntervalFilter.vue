@@ -1,9 +1,10 @@
 <script>
-
-import intervals from './intervals';
+import dateIntervals from './dateIntervals';
 
 export default {
-    mixins: [intervals],
+    name: 'CoreDateIntervalFilter',
+
+    mixins: [dateIntervals],
 
     methods: {
         update() {
@@ -42,5 +43,4 @@ export default {
         });
     },
 };
-
 </script>
