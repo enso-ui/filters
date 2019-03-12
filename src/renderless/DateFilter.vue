@@ -103,7 +103,7 @@ export default {
                 },
             },
             backEvents: {
-                click: () => this.setFilter('today'),
+                click: () => this.setFilter(this.default),
             },
             filterEvents: type => ({
                 click: () => this.setFilter(type),
