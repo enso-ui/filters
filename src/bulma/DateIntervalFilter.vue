@@ -21,8 +21,7 @@
                         <div class="column">
                             <datepicker :placeholder="i18n(maxLabel)"
                                 v-bind="minBindings"
-                                v-on="minEvents"
-                                @input="update"/>
+                                v-on="minEvents"/>
                         </div>
                     </div>
                 </div>
