@@ -1,5 +1,5 @@
-import IntervalFilter from '../src/renderless/IntervalFilter.vue';
-import DateFilter from '../src/renderless/DateFilter.vue';
-import DateIntervalFilter from '../src/renderless/DateIntervalFilter.vue';
+import CoreIntervalFilter from '../src/renderless/CoreIntervalFilter.vue';
+import CoreDateFilter from '../src/renderless/CoreDateFilter.vue';
+import CoreDateIntervalFilter from '../src/renderless/CoreDateIntervalFilter.vue';
 
-export { IntervalFilter, DateFilter, DateIntervalFilter };
+export { CoreIntervalFilter, CoreDateFilter, CoreDateIntervalFilter };

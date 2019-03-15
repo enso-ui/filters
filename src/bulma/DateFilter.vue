@@ -66,7 +66,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
-import CoreDateFilter from '../renderless/DateFilter.vue';
+import CoreDateFilter from '../renderless/CoreDateFilter.vue';
 
 library.add(faArrowLeft);
 

@@ -50,7 +50,7 @@
 
 <script>
 import { VTooltip } from 'v-tooltip';
-import CoreIntervalFilter from '../renderless/IntervalFilter.vue';
+import CoreIntervalFilter from '../renderless/CoreIntervalFilter.vue';
 
 export default {
     name: 'IntervalFilter',

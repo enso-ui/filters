@@ -33,7 +33,7 @@
 <script>
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
-import CoreDateIntervalFilter from '../renderless/DateIntervalFilter.vue';
+import CoreDateIntervalFilter from '../renderless/CoreDateIntervalFilter.vue';
 
 export default {
     name: 'DateIntervalFilter',
