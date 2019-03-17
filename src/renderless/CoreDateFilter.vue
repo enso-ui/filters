@@ -11,7 +11,7 @@ export default {
         default: {
             type: String,
             default: 'today',
-            validator: v => ['today', 'yesterday', '7 days', '30 days', 'all']
+            validator: v => ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'all']
                 .includes(v),
         },
     },
