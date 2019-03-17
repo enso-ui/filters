@@ -17,13 +17,20 @@ export default {
 
     components: { VueFilter },
 
-    data: () => ({
+    props: {
+        numeric: {
+            type: Boolean,
+            default: false,
+        },
+    },
+
+    data: v => ({
         options: [{
-            value: true,
+            value: v.numeric ? 1 : true,
             icon: 'check',
             class: 'has-text-success',
         }, {
-            value: false,
+            value: v.numeric ? 0 : false,
             icon: 'times',
             class: 'has-text-danger',
         }],

@@ -48,6 +48,7 @@ export default {
                 this[this.filter]();
             }
 
+            this.$emit('select', this.filter);
             this.$emit('update', this.sanitizedInterval);
         },
         all() {
