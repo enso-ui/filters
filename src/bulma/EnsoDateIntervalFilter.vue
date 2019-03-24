@@ -1,5 +1,5 @@
 <template>
-    <enso-date-filter :format="format || meta.jsDateFormat"
+    <enso-date-filter :format="format || meta.dateFormat"
         :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"

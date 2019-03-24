@@ -1,5 +1,5 @@
 <template>
-    <date-filter :format="format || meta.jsDateFormat"
+    <date-filter :format="format || meta.dateFormat"
         :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"
