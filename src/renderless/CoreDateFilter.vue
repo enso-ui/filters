@@ -2,6 +2,8 @@
 import { addDays, format, subDays } from 'date-fns';
 import dateIntervals from './dateIntervals';
 
+const values = ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'custom', 'all'];
+
 export default {
     name: 'CoreDateFilter',
 
@@ -11,9 +13,13 @@ export default {
         default: {
             type: String,
             default: 'today',
-            validator: v => ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'all']
-                .includes(v),
+            validator: v => values.includes(v),
         },
+        disabledOptions: {
+            type: Array,
+            default: [],
+            validator: v => !v.some(val => !values.includes(val)),
+        }
     },
 
     data: v => ({
@@ -109,7 +115,13 @@ export default {
             filterEvents: type => ({
                 click: () => this.setFilter(type),
             }),
-            filters: this.filters,
+            filters: Object.keys(this.filters).reduce((filters, key) => {
+                if (!this.disabledOptions.includes(key)) {
+                    filters[key] = this.filters[key];
+                }
+
+                return filters;
+            }, {}),
             filter: this.filter,
             custom: this.custom,
         });
