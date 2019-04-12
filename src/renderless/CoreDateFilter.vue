@@ -17,9 +17,9 @@ export default {
         },
         disabledOptions: {
             type: Array,
-            default: [],
+            default: () => ([]),
             validator: v => !v.some(val => !values.includes(val)),
-        }
+        },
     },
 
     data: v => ({
