@@ -20,8 +20,8 @@
                         </div>
                         <div class="column">
                             <datepicker :placeholder="i18n(maxLabel)"
-                                v-bind="minBindings"
-                                v-on="minEvents"/>
+                                v-bind="maxBindings"
+                                v-on="maxEvents"/>
                         </div>
                     </div>
                 </div>
