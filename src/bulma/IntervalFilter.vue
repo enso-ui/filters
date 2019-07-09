@@ -2,7 +2,7 @@
     <core-interval-filter v-bind="$attrs"
         v-on="$listeners">
         <template v-slot:default="{
-                interval, invalid, minBindings, minEvents, maxBindings,
+                value, invalid, minBindings, minEvents, maxBindings,
                 maxEvents, minClearEvents, maxClearEvents,
             }">
             <div class="interval-filter is-paddingless">
@@ -18,9 +18,9 @@
                                 <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
                                     :placeholder="i18n(minLabel)"
-                                    :v-bind="minBindings"
-                                    :v-on="minEvents">
-                                <span v-if="interval.min"
+                                    v-bind="minBindings"
+                                    v-on="minEvents">
+                                <span v-if="value.min"
                                     class="icon is-small is-right clear-button"
                                     v-on="minClearEvents">
                                     <a class="delete is-small"/>
@@ -32,9 +32,9 @@
                                 <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
                                     :placeholder="i18n(maxLabel)"
-                                    :v-bind="maxBindings"
-                                    :v-on="maxEvents">
-                                <span v-if="interval.max"
+                                    v-bind="maxBindings"
+                                    v-on="maxEvents">
+                                <span v-if="value.max"
                                     class="icon is-small is-right clear-button"
                                     v-on="maxClearEvents">
                                     <a class="delete is-small"/>

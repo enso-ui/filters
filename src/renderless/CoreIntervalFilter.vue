@@ -3,7 +3,7 @@ export default {
     name: 'CoreIntervalFilter',
 
     props: {
-        interval: {
+        value: {
             type: Object,
             default: () => ({
                 min: null,
@@ -20,51 +20,51 @@ export default {
 
     computed: {
         invalid() {
-            return this.interval.min !== null
-                && this.interval.max !== null
-                && this.interval.min > this.interval.max;
+            return this.value.min !== null
+                && this.value.max !== null
+                && this.value.min > this.value.max;
         },
     },
 
     methods: {
         update() {
-            this.$emit('update', this.interval);
+            this.$emit('input', this.value);
         },
     },
 
     render() {
         return this.$scopedSlots.default({
             invalid: this.invalid,
-            interval: this.interval,
+            value: this.value,
             minBindings: {
-                value: this.interval.min,
+                value: this.value.min,
                 type: this.type,
             },
             minEvents: {
                 input: (e) => {
-                    this.interval.min = e;
+                    this.value.min = e.target.value;
                     this.update();
                 },
             },
             maxBindings: {
-                value: this.interval.max,
+                value: this.value.max,
                 type: this.type,
             },
             maxEvents: {
                 input: (e) => {
-                    this.interval.max = e;
+                    this.value.max = e.target.value;
                     this.update();
                 },
             },
             minClearEvents: {
                 click: () => {
-                    this.interval.min = null;
+                    this.value.min = null;
                     this.update();
                 },
             },
             maxClearEvents: {
                 click: () => {
-                    this.interval.min = null;
+                    this.value.min = null;
                     this.update();
                 },
             },
