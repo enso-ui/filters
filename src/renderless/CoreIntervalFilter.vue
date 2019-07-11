@@ -64,7 +64,7 @@ export default {
             },
             maxClearEvents: {
                 click: () => {
-                    this.value.min = null;
+                    this.value.max = null;
                     this.update();
                 },
             },
