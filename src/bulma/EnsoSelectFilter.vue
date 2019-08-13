@@ -7,7 +7,8 @@
             :class="{'has-background-light': compact}"
             :title="title"
             v-bind="$attrs"
-            v-on="$listeners"/>
+            v-on="$listeners"
+            ref="select"/>
     </core-select-filter>
 </template>
 
@@ -33,6 +34,15 @@ export default {
         title: {
             type: String,
             default: null,
+        },
+    },
+
+    methods: {
+        clear() {
+            this.$refs.select.clear();
+        },
+        fetch() {
+            this.$refs.select.fetch();
         },
     },
 };
