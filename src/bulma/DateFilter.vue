@@ -9,10 +9,10 @@
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
-                        {{ title }}
+                        {{ label(custom) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? title : null"
+                <div v-tooltip="compact ? mode : null"
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
@@ -86,13 +86,15 @@ export default {
             type: Function,
             default: v => v,
         },
+        title: {
+            type: String,
+            default: null,
+        },
     },
 
-    computed: {
-        title() {
-            return this.custom
-                ? this.i18n('Between')
-                : this.i18n('When');
+    methods: {
+        label(custom) {
+            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.title ? `: ${this.title}` : ''}`;
         },
     },
 };
