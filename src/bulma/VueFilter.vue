@@ -132,7 +132,7 @@ export default {
 
                 li {
                     a {
-                        padding: 0.25em 0;
+                        padding: 0.25em;
                     }
                 }
             }
