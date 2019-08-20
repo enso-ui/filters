@@ -12,7 +12,7 @@
                         {{ label(custom) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? mode : null"
+                <div v-tooltip="compact ? label(custom) : null"
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
