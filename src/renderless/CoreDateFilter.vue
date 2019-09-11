@@ -40,6 +40,12 @@ export default {
         },
     },
 
+    watch: {
+        default(value) {
+            this.filter = value;
+        },
+    },
+
     created() {
         this.update();
     },
