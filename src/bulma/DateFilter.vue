@@ -2,7 +2,7 @@
     <core-date-filter v-bind="$attrs"
         v-on="$listeners">
         <template v-slot:default="{
-                filters, filter, custom, minBindings, minEvents,
+                filters, value, custom, minBindings, minEvents,
                 maxBindings, maxEvents, backEvents, filterEvents,
             }">
             <div class="date-filter is-paddingless">
@@ -21,7 +21,7 @@
                             v-if="!custom">
                             <div class="filter-tags">
                                 <span class="tag"
-                                    :class="{ 'is-warning': filter === key }"
+                                    :class="{ 'is-warning': value === key }"
                                     v-for="(type, key) in filters"
                                     :key="key"
                                     v-on="filterEvents(key)">

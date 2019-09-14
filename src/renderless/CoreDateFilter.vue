@@ -2,8 +2,6 @@
 import { addDays, format, subDays } from 'date-fns';
 import dateIntervals from './dateIntervals';
 
-const values = ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'custom', 'all'];
-
 export default {
     name: 'CoreDateFilter',
 
@@ -13,16 +11,24 @@ export default {
         default: {
             type: String,
             default: 'today',
-            validator: v => values.includes(v),
+            validator: v => ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'all']
+                .includes(v),
         },
         disabledOptions: {
             type: Array,
             default: () => ([]),
-            validator: v => !v.some(val => !values.includes(val)),
+            validator: v => !v.some(val => !['today', 'yesterday', 'sevenDays', 'thirtyDays', 'custom', 'all']
+                .includes(val)),
+        },
+        value: {
+            type: String,
+            required: true,
+            validator: v => ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'custom', 'all']
+                .includes(v),
         },
     },
 
-    data: v => ({
+    data: () => ({
         filters: {
             today: 'today',
             yesterday: 'yesterday',
@@ -31,19 +37,16 @@ export default {
             custom: 'custom',
             all: 'all',
         },
-        filter: v.default,
     }),
 
     computed: {
         custom() {
-            return this.filter === this.filters.custom;
+            return this.value === this.filters.custom;
         },
     },
 
     watch: {
-        default(value) {
-            this.filter = value;
-        },
+        value: 'update',
     },
 
     created() {
@@ -52,15 +55,14 @@ export default {
 
     methods: {
         setFilter(filter) {
-            this.filter = filter;
+            this.$emit('input', filter);
             this.update();
         },
         update() {
-            if (this.filter !== this.filters.custom) {
-                this[this.filter]();
+            if (this.value !== this.filters.custom) {
+                this[this.value]();
             }
 
-            this.$emit('select', this.filter);
             this.$emit('update', this.sanitizedInterval);
         },
         all() {
@@ -128,7 +130,7 @@ export default {
 
                 return filters;
             }, {}),
-            filter: this.filter,
+            value: this.value,
             custom: this.custom,
         });
     },
