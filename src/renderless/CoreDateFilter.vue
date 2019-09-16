@@ -22,13 +22,13 @@ export default {
         },
         value: {
             type: String,
-            required: true,
+            default: null,
             validator: v => ['today', 'yesterday', 'sevenDays', 'thirtyDays', 'custom', 'all']
                 .includes(v),
         },
     },
 
-    data: () => ({
+    data: v => ({
         filters: {
             today: 'today',
             yesterday: 'yesterday',
@@ -37,11 +37,12 @@ export default {
             custom: 'custom',
             all: 'all',
         },
+        filter: v.value || v.default,
     }),
 
     computed: {
         custom() {
-            return this.value === this.filters.custom;
+            return this.filter === this.filters.custom;
         },
     },
 
@@ -55,12 +56,13 @@ export default {
 
     methods: {
         setFilter(filter) {
+            this.filter = filter;
             this.$emit('input', filter);
             this.update();
         },
         update() {
-            if (this.value !== this.filters.custom) {
-                this[this.value]();
+            if (this.filter !== this.filters.custom) {
+                this[this.filter]();
             }
 
             this.$emit('update', this.sanitizedInterval);
@@ -130,7 +132,7 @@ export default {
 
                 return filters;
             }, {}),
-            value: this.value,
+            filter: this.filter,
             custom: this.custom,
         });
     },
