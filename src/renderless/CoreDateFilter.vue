@@ -47,7 +47,10 @@ export default {
     },
 
     watch: {
-        value: 'update',
+        value(value) {
+            this.filter = value;
+            this.update();
+        },
     },
 
     created() {
