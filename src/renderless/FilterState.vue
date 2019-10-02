@@ -73,10 +73,13 @@ export default {
             const state = JSON.parse(
                 localStorage.getItem(this.name),
             );
+
             if (state && state.apiVersion === this.state.apiVersion) {
                 ['filters', 'intervals', 'params']
                     .forEach(obj => this.fill(obj, state[obj]));
             }
+
+            this.$emit('ready');
         },
         fill(obj, state) {
             if (this[obj]) {
