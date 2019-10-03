@@ -113,7 +113,8 @@ designed to be used within the **Enso ecosystem**, requiring less configuration 
 Example:
 ```vue
 <enso-date-filter class="box raises-on-hover has-margin-top-large"
-    @update="filters.interval = $event"/>
+    v-model="params.dateInterval"
+    :interval="intervals.products.updated_at"/>
 ```
 
 Properties:
