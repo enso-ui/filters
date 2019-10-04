@@ -1,5 +1,5 @@
 <script>
-import { addDays, format, subDays } from 'date-fns';
+import { format, subDays } from 'date-fns';
 import dateIntervals from './dateIntervals';
 
 export default {
@@ -75,20 +75,23 @@ export default {
             this.interval.max = null;
         },
         today() {
-            this.interval.min = format(new Date(), this.alternateFormat);
-            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+            const today = new Date();
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
         },
         yesterday() {
-            this.interval.min = format(subDays(new Date(), 1), this.alternateFormat);
-            this.interval.max = format(new Date(), this.alternateFormat);
+            this.interval.min = format(subDays(new Date(), 1).setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(subDays(new Date(), 1).setHours(23, 59, 59, 999), this.alternateFormat);
         },
         sevenDays() {
-            this.interval.min = format(subDays(new Date(), 7), this.alternateFormat);
-            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+            const today = new Date();
+            this.interval.min = format(subDays(today, 6).setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
         },
         thirtyDays() {
-            this.interval.min = format(subDays(new Date(), 30), this.alternateFormat);
-            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+            const today = new Date();
+            this.interval.min = format(subDays(today, 29).setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
         },
     },
 

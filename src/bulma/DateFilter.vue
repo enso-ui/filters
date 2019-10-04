@@ -43,11 +43,15 @@
                                 </div>
                                 <div class="column">
                                     <datepicker :placeholder="i18n('From')"
+                                        :alt-format="altFormat"
+                                        :alt-input="altInput"
                                         v-bind="minBindings"
                                         v-on="minEvents"/>
                                 </div>
                                 <div class="column">
                                     <datepicker :placeholder="i18n('To')"
+                                        :alt-format="altFormat"
+                                        :alt-input="altInput"
                                         v-bind="maxBindings"
                                         v-on="maxEvents"/>
                                 </div>
@@ -78,6 +82,14 @@ export default {
     components: { CoreDateFilter, Fade, Datepicker },
 
     props: {
+        altFormat: {
+            type: String,
+            defaut: null,
+        },
+        altInput: {
+            type: Boolean,
+            defaut: false,
+        },
         compact: {
             type: Boolean,
             default: false,

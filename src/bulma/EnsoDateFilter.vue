@@ -1,5 +1,7 @@
 <template>
-    <date-filter :format="format || meta.dateFormat"
+    <date-filter :format="format || meta.dateTimeFormat"
+        :alt-format="altFormat || meta.dateFormat"
+        alt-input
         :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"
@@ -18,6 +20,10 @@ export default {
     inject: ['i18n'],
 
     props: {
+        altFormat: {
+            type: String,
+            default: null,
+        },
         format: {
             type: String,
             default: null,
