@@ -9,10 +9,10 @@
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
-                        {{ label(custom) }}
+                        {{ displayLabel(custom) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? label(custom) : null"
+                <div v-tooltip="compact ? displayLabel(custom) : null"
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
@@ -84,7 +84,7 @@ export default {
     props: {
         altFormat: {
             type: String,
-            defaut: null,
+            default: null,
         },
         altInput: {
             type: Boolean,
@@ -98,15 +98,15 @@ export default {
             type: Function,
             default: v => v,
         },
-        title: {
+        label: {
             type: String,
             default: null,
         },
     },
 
     methods: {
-        label(custom) {
-            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.title ? `: ${this.title}` : ''}`;
+        displayLabel(custom) {
+            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.label ? `: ${this.label}` : ''}`;
         },
     },
 };

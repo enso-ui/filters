@@ -1,11 +1,10 @@
 <template>
     <core-select-filter :compact="compact"
         :i18n="i18n"
-        :title="title">
-        <enso-select v-tooltip="compact ? i18n(title) : null"
+        :label="label">
+        <enso-select v-tooltip="compact ? i18n(label) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"
-            :title="title"
             v-bind="$attrs"
             v-on="$listeners"
             ref="select"/>
@@ -31,7 +30,7 @@ export default {
             type: Boolean,
             default: false,
         },
-        title: {
+        label: {
             type: String,
             default: null,
         },

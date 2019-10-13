@@ -6,10 +6,10 @@
                 <div class="header has-background-light has-text-centered"
                     v-if="!compact">
                     <strong>
-                        {{ i18n(title) }}
+                        {{ i18n(label) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? i18n(title) : null"
+                <div v-tooltip="compact ? i18n(label) : null"
                     class="dates-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <div class="columns is-mobile is-variable is-1 is-centered">
@@ -59,7 +59,7 @@ export default {
             type: String,
             default: 'From',
         },
-        title: {
+        label: {
             type: String,
             default: null,
         },
