@@ -2,14 +2,14 @@
     <div class="vue-filter is-paddingless">
         <div v-if="!compact"
             class="header has-text-centered has-background-light">
-            <strong>{{ i18n(label) }}</strong>
+            <strong>{{ i18n(name) }}</strong>
             <span v-if="readonly"
                 class="icon lock has-text-muted">
                 <fa icon="lock"
                     size="xs"/>
             </span>
         </div>
-        <div v-tooltip="compact ? i18n(label) : null"
+        <div v-tooltip="compact ? i18n(name) : null"
             class="tabs-wrapper"
             :class="{ 'has-background-light': compact }">
             <div class="tabs is-toggle is-fullwidth filter-tabs">
@@ -91,7 +91,7 @@ export default {
             type: Boolean,
             default: false,
         },
-        label: {
+        name: {
             type: String,
             default: null,
         },

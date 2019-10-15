@@ -2,7 +2,7 @@
     <div class="vue-filter is-paddingless">
         <div v-if="!compact"
             class="header has-text-centered has-background-light">
-            <b>{{ i18n(label) }}</b>
+            <b>{{ i18n(name) }}</b>
         </div>
         <slot/>
     </div>
@@ -25,7 +25,7 @@ export default {
             type: Function,
             default: v => v,
         },
-        label: {
+        name: {
             type: String,
             default: null,
         },

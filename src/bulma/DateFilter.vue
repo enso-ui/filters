@@ -98,7 +98,7 @@ export default {
             type: Function,
             default: v => v,
         },
-        label: {
+        name: {
             type: String,
             default: null,
         },
@@ -106,7 +106,7 @@ export default {
 
     methods: {
         displayLabel(custom) {
-            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.label ? `: ${this.label}` : ''}`;
+            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.name ? `: ${this.name}` : ''}`;
         },
     },
 };

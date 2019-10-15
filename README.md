@@ -60,7 +60,7 @@ The bulma styled boolean filtering component, built on top of the VueFilter comp
 - `offLabel` - `string`, optional, default ``, the label used for the 'off' option
 - `options`, `array`, optional, default `[]`, the list of options
 - `readonly` - `boolean`, optional, default `false`, if true hides marks the filter as read-only
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 - `value`, `null`, optional, default `null`, the value of the filter
 
 ### bulma/DateFilter.vue
@@ -100,7 +100,7 @@ Properties:
 - `locale` - `string`, optional, default `en`, the locale used for the picker
 - `maxLabel` - `string`, optional, default `To`, the label for the interval end
 - `minLabel` - `string`, optional, default `From`, the label used for interval start
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 
 'Passed-through' properties:
 - `format` - `string`, optional, default `d-m-Y`, the format of the date
@@ -160,7 +160,7 @@ Example:
 - `i18n`, `Function`, optional, default `v => v`, the function that performs translations
 - `maxLabel` - `string`, optional, default `Max`, the label for the interval end
 - `minLabel` - `string`, optional, default `Min`, the label used for interval start
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 
 ### bulma/EnsoFilter.vue
 
@@ -180,7 +180,7 @@ Example:
 - `offLabel` - `string`, optional, default ``, the label used for the 'off' option
 - `options`, `array`, optional, default `[]`, the list of options
 - `readonly` - `boolean`, optional, default `false`, if true hides marks the filter as read-only
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 - `value`, `null`, optional, default `null`, the value of the filter
 
 ### bulma/IntervalFilter.vue
@@ -192,7 +192,7 @@ Properties:
 - `i18n`, `function`, optional, default `v => v`, the function that performs translations
 - `maxLabel` - `string`, optional, default `Max`, the label for the interval end
 - `minLabel` - `string`, optional, default `Min`, the label used for interval start
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 
 'Passed-through' Properties:
 - `interval` - `object`, optional, default `{min: null, max: null}`, the min/max values object
@@ -204,7 +204,7 @@ The bulma styled interval filtering component, built on top of the renderless ve
 
 Example:
 ```vue
-<select-filter label="my label" 
+<select-filter name="my name" 
     :source="route('administration.userGroups.options')"
     v-model="filters.user_group_id"/>
 ```
@@ -212,7 +212,7 @@ Example:
 Properties:
 - `compact` - `boolean`, optional, default `false`, shows the component using a more compact state
 - `i18n`, `Function`, optional, default `v => v`, the function that performs translations
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 
 'Passed-through' Properties:
 - `value` - optional, default `null`, the value of the select filter
@@ -244,7 +244,7 @@ Properties:
 - `offLabel` - `string`, optional, default ``, the label used for the 'off' option
 - `options`, `array`, optional, default `[]`, the list of options
 - `readonly` - `boolean`, optional, default `false`, if true hides marks the filter as read-only
-- `label` - `string`, optional, default `null`, the label for the filter
+- `name` - `string`, optional, default `null`, the name for the filter
 - `value`, `null`, optional, default `null`, the value of the filter
 
 ### renderless/DateFilter.vue
