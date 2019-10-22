@@ -20,9 +20,11 @@ export default {
 
     computed: {
         invalid() {
-            return this.value.min !== null
-                && this.value.max !== null
-                && this.value.min > this.value.max;
+            return ![null, ''].includes(this.value.min)
+                && ![null, ''].includes(this.value.max)
+                && (this.type === 'number'
+                    ? Number.parseFloat(this.value.min) > Number.parseFloat(this.value.max)
+                    : this.value.min > this.value.max);
         },
     },
 
