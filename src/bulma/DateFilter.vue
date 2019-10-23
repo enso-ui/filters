@@ -9,10 +9,10 @@
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
-                        {{ label(custom) }}
+                        {{ displayLabel(custom) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? label(custom) : null"
+                <div v-tooltip="compact ? displayLabel(custom) : null"
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
@@ -43,11 +43,15 @@
                                 </div>
                                 <div class="column">
                                     <datepicker :placeholder="i18n('From')"
+                                        :alt-format="altFormat"
+                                        :alt-input="altInput"
                                         v-bind="minBindings"
                                         v-on="minEvents"/>
                                 </div>
                                 <div class="column">
                                     <datepicker :placeholder="i18n('To')"
+                                        :alt-format="altFormat"
+                                        :alt-input="altInput"
                                         v-bind="maxBindings"
                                         v-on="maxEvents"/>
                                 </div>
@@ -78,6 +82,14 @@ export default {
     components: { CoreDateFilter, Fade, Datepicker },
 
     props: {
+        altFormat: {
+            type: String,
+            default: null,
+        },
+        altInput: {
+            type: Boolean,
+            defaut: false,
+        },
         compact: {
             type: Boolean,
             default: false,
@@ -86,15 +98,15 @@ export default {
             type: Function,
             default: v => v,
         },
-        title: {
+        name: {
             type: String,
             default: null,
         },
     },
 
     methods: {
-        label(custom) {
-            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.title ? `: ${this.title}` : ''}`;
+        displayLabel(custom) {
+            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.name ? `: ${this.name}` : ''}`;
         },
     },
 };

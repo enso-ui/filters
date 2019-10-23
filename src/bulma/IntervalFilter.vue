@@ -8,9 +8,9 @@
             <div class="interval-filter is-paddingless">
                 <div v-if="!compact"
                     class="header has-text-centered has-background-light">
-                    <b>{{ i18n(title) }}</b>
+                    <b>{{ i18n(name) }}</b>
                 </div>
-                <div v-tooltip="compact ? i18n(title) : null"
+                <div v-tooltip="compact ? i18n(name) : null"
                     :class="['input-wrapper', {'has-background-light': compact}]">
                     <div class="columns is-mobile">
                         <div class="column">
@@ -76,7 +76,7 @@ export default {
             type: String,
             default: 'Min',
         },
-        title: {
+        name: {
             type: String,
             default: null,
         },

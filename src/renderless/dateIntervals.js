@@ -25,7 +25,10 @@ export default {
         alternateFormat() {
             return this.format.replace('d', 'dd')
                 .replace('m', 'MM')
-                .replace('Y', 'yyyy');
+                .replace('Y', 'yyyy')
+                .replace('H', 'HH')
+                .replace('i', 'mm')
+                .replace('s', 'ss');
         },
         sanitizedInterval() {
             return {

@@ -1,12 +1,11 @@
 <template>
     <core-select-filter :compact="compact"
         :i18n="i18n"
-        :title="title">
-        <vue-select v-tooltip="compact ? i18n(title) : null"
+        :name="name">
+        <vue-select v-tooltip="compact ? i18n(name) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"
             :i18n="i18n"
-            :title="title"
             v-bind="$attrs"
             v-on="$listeners"
             ref="select"/>
@@ -34,7 +33,7 @@ export default {
             type: Function,
             default: v => v,
         },
-        title: {
+        name: {
             type: String,
             default: null,
         },
