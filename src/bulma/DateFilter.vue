@@ -2,8 +2,8 @@
     <core-date-filter v-bind="$attrs"
         v-on="$listeners">
         <template v-slot:default="{
-                filters, filter, custom, minBindings, minEvents,
-                maxBindings, maxEvents, backEvents, filterEvents,
+                filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
+                direction, directionBindings, directionEvents, backEvents, filterEvents,
             }">
             <div class="date-filter is-paddingless">
                 <div class="header has-text-centered has-background-light"
@@ -20,6 +20,11 @@
                             key="tags"
                             v-if="!custom">
                             <div class="filter-tags">
+                                <span v-if="!direction">
+                                    <vue-switch class="is-small direction"
+                                        v-bind="directionBindings"
+                                        v-on="directionEvents"/>
+                                </span>
                                 <span class="tag"
                                     :class="{ 'is-warning': filter === key }"
                                     v-for="(type, key) in filters"
@@ -70,6 +75,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
+import VueSwitch from '@enso-ui/switch/bulma';
 import CoreDateFilter from '../renderless/CoreDateFilter.vue';
 
 library.add(faArrowLeft);
@@ -79,7 +85,9 @@ export default {
 
     directives: { tooltip: VTooltip },
 
-    components: { CoreDateFilter, Fade, Datepicker },
+    components: {
+ CoreDateFilter, Fade, Datepicker, VueSwitch 
+},
 
     props: {
         altFormat: {
@@ -134,6 +142,10 @@ export default {
             .filter-tags {
                 min-height: 2.25em;
                 padding: 0.2em;
+
+                .direction {
+                    vertical-align: middle;
+                }
             }
         }
     }
