@@ -51,8 +51,12 @@ export default {
 
     data: v => ({
         filter: v.value || v.default,
-        isForward: this.forward,
+        isForward: null,
     }),
+
+    beforeMount() {
+        this.isForward = this.forward;
+    },
 
     computed: {
         filters() {
@@ -81,8 +85,7 @@ export default {
         },
     },
 
-    beforeMount() {
-        this.isForward = this.forward;
+    created() {
         this.update();
     },
 
@@ -123,8 +126,8 @@ export default {
         },
         nextSevenDays() {
             const today = new Date();
-            this.interval.min = format(addDays(today, 6).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(addDays(today, 6).setHours(23, 59, 59, 999), this.alternateFormat);
         },
         thirtyDays() {
             const today = new Date();
@@ -133,8 +136,8 @@ export default {
         },
         nextThirtyDays() {
             const today = new Date();
-            this.interval.min = format(addDays(today, 29).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
+            this.interval.max = format(addDays(today, 29).setHours(23, 59, 59, 999), this.alternateFormat);
         },
     },
 
