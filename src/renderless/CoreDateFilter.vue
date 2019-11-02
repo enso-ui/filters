@@ -81,7 +81,8 @@ export default {
         },
     },
 
-    created() {
+    beforeMount() {
+        this.isForward = this.forward;
         this.update();
     },
 
