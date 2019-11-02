@@ -20,7 +20,7 @@
                             key="tags"
                             v-if="!custom">
                             <div class="filter-tags">
-                                <span v-if="!direction">
+                                <span v-if="direction">
                                     <vue-switch class="is-small direction"
                                         v-bind="directionBindings"
                                         v-on="directionEvents"/>
@@ -86,8 +86,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
- CoreDateFilter, Fade, Datepicker, VueSwitch 
-},
+        CoreDateFilter, Fade, Datepicker, VueSwitch,
+    },
 
     props: {
         altFormat: {
