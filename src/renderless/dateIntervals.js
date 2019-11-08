@@ -4,7 +4,7 @@ export default {
     props: {
         format: {
             type: String,
-            default: 'd-m-Y',
+            default: 'Y-m-d H:i:s',
         },
         interval: {
             type: Object,
@@ -22,7 +22,7 @@ export default {
     },
 
     computed: {
-        alternateFormat() {
+        internalFormat() {
             return this.format.replace('d', 'dd')
                 .replace('m', 'MM')
                 .replace('Y', 'yyyy')
@@ -37,10 +37,10 @@ export default {
             };
         },
         parsedMax() {
-            return parse(this.interval.max, this.alternateFormat, new Date());
+            return parse(this.interval.max, this.internalFormat, new Date());
         },
         parsedMin() {
-            return parse(this.interval.min, this.alternateFormat, new Date());
+            return parse(this.interval.min, this.internalFormat, new Date());
         },
         equals() {
             return !!this.interval.min

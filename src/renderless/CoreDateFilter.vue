@@ -54,10 +54,6 @@ export default {
         isForward: null,
     }),
 
-    beforeMount() {
-        this.isForward = this.forward;
-    },
-
     computed: {
         filters() {
             const options = this.isForward
@@ -85,6 +81,10 @@ export default {
         },
     },
 
+    beforeMount() {
+        this.isForward = this.forward;
+    },
+
     created() {
         this.update();
     },
@@ -108,36 +108,36 @@ export default {
         },
         today() {
             const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
         },
         yesterday() {
-            this.interval.min = format(subDays(new Date(), 1).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(subDays(new Date(), 1).setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(subDays(new Date(), 1).setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(subDays(new Date(), 1).setHours(23, 59, 59, 999), this.internalFormat);
         },
         tomorrow() {
-            this.interval.min = format(addDays(new Date(), 1).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(addDays(new Date(), 1).setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(addDays(new Date(), 1).setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(addDays(new Date(), 1).setHours(23, 59, 59, 999), this.internalFormat);
         },
         sevenDays() {
             const today = new Date();
-            this.interval.min = format(subDays(today, 6).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(subDays(today, 6).setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
         },
         nextSevenDays() {
             const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(addDays(today, 6).setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(addDays(today, 6).setHours(23, 59, 59, 999), this.internalFormat);
         },
         thirtyDays() {
             const today = new Date();
-            this.interval.min = format(subDays(today, 29).setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(subDays(today, 29).setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
         },
         nextThirtyDays() {
             const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.alternateFormat);
-            this.interval.max = format(addDays(today, 29).setHours(23, 59, 59, 999), this.alternateFormat);
+            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
+            this.interval.max = format(addDays(today, 29).setHours(23, 59, 59, 999), this.internalFormat);
         },
     },
 

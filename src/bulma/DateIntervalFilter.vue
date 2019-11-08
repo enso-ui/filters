@@ -15,11 +15,15 @@
                     <div class="columns is-mobile is-variable is-1 is-centered">
                         <div class="column">
                             <datepicker :placeholder="i18n(minLabel)"
+                                :alt-format="altFormat"
+                                :alt-input="altInput"
                                 v-bind="minBindings"
                                 v-on="minEvents"/>
                         </div>
                         <div class="column">
                             <datepicker :placeholder="i18n(maxLabel)"
+                                :alt-format="altFormat"
+                                :alt-input="altInput"
                                 v-bind="maxBindings"
                                 v-on="maxEvents"/>
                         </div>
@@ -43,6 +47,14 @@ export default {
     components: { CoreDateIntervalFilter, Datepicker },
 
     props: {
+        altFormat: {
+            type: String,
+            default: null,
+        },
+        altInput: {
+            type: Boolean,
+            defaut: false,
+        },
         compact: {
             type: Boolean,
             default: false,

@@ -1,5 +1,6 @@
 <template>
-    <enso-date-filter :format="format || meta.dateFormat"
+    <enso-date-filter alt-input
+        :alt-format="format || meta.dateFormat"
         :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"
@@ -18,7 +19,7 @@ export default {
     inject: ['i18n'],
 
     props: {
-        format: {
+        altFormat: {
             type: String,
             default: null,
         },
