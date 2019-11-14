@@ -47,14 +47,16 @@
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <datepicker :placeholder="i18n('From')"
+                                    <datepicker class="picker"
+                                        :placeholder="i18n('From')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
                                         v-bind="minBindings"
                                         v-on="minEvents"/>
                                 </div>
                                 <div class="column">
-                                    <datepicker :placeholder="i18n('To')"
+                                    <datepicker class="picker"
+                                        :placeholder="i18n('To')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
                                         v-bind="maxBindings"
@@ -131,6 +133,10 @@ export default {
         .tag {
             cursor: pointer;
             margin: 2px;
+        }
+
+        .picker {
+            width: 12.6em;
         }
 
         .filter-wrapper {
