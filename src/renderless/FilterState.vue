@@ -1,4 +1,6 @@
 <script>
+const keys = ['filters', 'intervals', 'params'];
+
 export default {
     name: 'FilterState',
 
@@ -29,27 +31,9 @@ export default {
         defaultFilters: null,
         defaultIntervals: null,
         defaultParams: null,
+        state: null,
+        keys: null,
     }),
-
-    computed: {
-        state() {
-            const state = { apiVersion: this.apiVersion };
-
-            if (this.filters) {
-                state.filters = this.filters;
-            }
-
-            if (this.intervals) {
-                state.intervals = this.intervals;
-            }
-
-            if (this.params) {
-                state.params = this.params;
-            }
-
-            return state;
-        },
-    },
 
     watch: {
         state: {
@@ -59,47 +43,55 @@ export default {
     },
 
     created() {
-        this.defaults();
+        this.init();
         this.load();
     },
 
     methods: {
-        defaults() {
-            this.defaultFilters = JSON.stringify(this.filters);
-            this.defaultIntervals = JSON.stringify(this.intervals);
-            this.defaultParams = JSON.stringify(this.params);
+        init() {
+            this.defaultFilters = this.stringify(this.filters);
+            this.defaultIntervals = this.stringify(this.intervals);
+            this.defaultParams = this.stringify(this.params);
+            this.keys = keys.filter(key => !!this[key]);
+            this.state = { apiVersion: this.apiVersion };
+            this.keys.forEach(key => (this.state[key] = this[key]));
         },
         load() {
-            const state = JSON.parse(
-                localStorage.getItem(this.name),
-            );
+            const state = JSON.parse(localStorage.getItem(this.name));
 
-            if (state && state.apiVersion === this.state.apiVersion) {
-                ['filters', 'intervals', 'params']
-                    .forEach(obj => this.fill(obj, state[obj]));
+            if (!!state && state.apiVersion === this.state.apiVersion) {
+                this.keys.forEach(key => this.fill(this.state[key], state[key]));
             }
+
+            this.persist();
 
             this.$emit('ready');
         },
-        fill(obj, state) {
-            if (this[obj]) {
-                Object.keys(this[obj])
-                    .forEach(key => (this[obj][key] = state[key]));
-            }
+        fill(to, from) {
+            Object.keys(to).forEach((key) => {
+                if (to[key] && typeof to[key] === 'object') {
+                    this.fill(to[key], from[key]);
+                } else {
+                    to[key] = from[key];
+                }
+            });
         },
         persist() {
-            localStorage.setItem(
-                this.name, JSON.stringify(this.state),
-            );
+            localStorage.setItem(this.name, JSON.stringify(this.state));
         },
         reset() {
             localStorage.removeItem(this.name);
-            ['filters', 'intervals', 'params']
-                .forEach(obj => this.fill(obj, this.default(obj)));
+
+            this.keys.forEach(key => this.fill(this[key], this.default(key)));
         },
-        default(obj) {
-            obj = `default${obj.charAt(0).toUpperCase()}${obj.slice(1)}`;
-            return JSON.parse(this[obj]);
+        default(key) {
+            key = `default${key.charAt(0).toUpperCase()}${key.slice(1)}`;
+            return JSON.parse(this[key]);
+        },
+        stringify(object) {
+            return object
+                ? JSON.stringify(object)
+                : null;
         },
     },
 
