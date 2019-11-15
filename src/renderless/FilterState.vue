@@ -69,7 +69,7 @@ export default {
         },
         fill(to, from) {
             Object.keys(to).forEach((key) => {
-                if (to[key] && typeof to[key] === 'object') {
+                if (to[key] && typeof to[key] === 'object' && !Array.isArray(to[key])) {
                     this.fill(to[key], from[key]);
                 } else {
                     to[key] = from[key];
