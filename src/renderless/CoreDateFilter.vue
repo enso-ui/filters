@@ -1,19 +1,16 @@
 <script>
-import { format, subDays, addDays } from 'date-fns';
+import {addDays} from 'date-fns';
 import dateIntervals from './dateIntervals';
+import dateFilters from './dateFilters';
 
-const Base = ['today', 'all'];
-const Backward = ['yesterday', 'sevenDays', 'thirtyDays'];
-const Forward = ['tomorrow', 'nextSevenDays', 'nextThirtyDays'];
-const Custom = ['custom'];
-const Labels = {
-    today: 'today',
-    yesterday: 'yesterday',
-    tomorrow: 'tomorrow',
-    sevenDays: '7 days',
-    nextSevenDays: 'next 7 days',
-    thirtyDays: '30 days',
-    nextThirtyDays: 'next 30 days',
+const Dates = {
+    today: { min: 0, max: 0},
+    yesterday: { min: -1, max: -1},
+    tomorrow: { min: 1, max: 1},
+    sevenDays: { min: -6, max: 0},
+    nextSevenDays: { min: 0, max: 6},
+    nextThirtyDays: { min: 0, max: 29},
+    thirtyDays: { min: -29, max: 0},
     custom: 'custom',
     all: 'all',
 };
@@ -21,65 +18,7 @@ const Labels = {
 export default {
     name: 'CoreDateFilter',
 
-    mixins: [dateIntervals],
-
-    props: {
-        default: {
-            type: String,
-            default: 'today',
-            validator: v => Base.concat(Backward).concat(Forward).includes(v),
-        },
-        disabledOptions: {
-            type: Array,
-            default: () => ([]),
-            validator: v => !v.some(val => !Base.concat(Backward).concat(Forward).concat(Custom).includes(val)),
-        },
-        direction: {
-            type: Boolean,
-            default: false,
-        },
-        forward: {
-            type: Boolean,
-            default: false,
-        },
-        value: {
-            type: String,
-            default: null,
-            validator: v => Base.concat(Backward).concat(Forward).concat(Custom).includes(v),
-        },
-    },
-
-    data: v => ({
-        filter: v.value || v.default,
-        isForward: null,
-    }),
-
-    computed: {
-        filters() {
-            const options = this.isForward
-                ? Base.concat(Forward).concat(Custom)
-                : Base.concat(Backward).concat(Custom);
-
-            return Object.keys(Labels)
-                .reduce((filters, option) => {
-                    if (options.includes(option)) {
-                        filters[option] = Labels[option];
-                    }
-
-                    return filters;
-                }, {});
-        },
-        custom() {
-            return this.filter === this.filters.custom;
-        },
-    },
-
-    watch: {
-        value(value) {
-            this.filter = value;
-            this.update();
-        },
-    },
+    mixins: [dateIntervals, dateFilters],
 
     beforeMount() {
         this.isForward = this.forward;
@@ -97,47 +36,21 @@ export default {
         },
         update() {
             if (this.filter !== this.filters.custom) {
-                this[this.filter]();
+                this.setDates();
             }
 
             this.$emit('update', this.sanitizedInterval);
         },
-        all() {
-            this.interval.min = null;
-            this.interval.max = null;
-        },
-        today() {
-            const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        yesterday() {
-            this.interval.min = format(subDays(new Date(), 1).setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(subDays(new Date(), 1).setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        tomorrow() {
-            this.interval.min = format(addDays(new Date(), 1).setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(addDays(new Date(), 1).setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        sevenDays() {
-            const today = new Date();
-            this.interval.min = format(subDays(today, 6).setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        nextSevenDays() {
-            const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(addDays(today, 6).setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        thirtyDays() {
-            const today = new Date();
-            this.interval.min = format(subDays(today, 29).setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(today.setHours(23, 59, 59, 999), this.internalFormat);
-        },
-        nextThirtyDays() {
-            const today = new Date();
-            this.interval.min = format(today.setHours(0, 0, 0, 0), this.internalFormat);
-            this.interval.max = format(addDays(today, 29).setHours(23, 59, 59, 999), this.internalFormat);
+        setDates () {
+            if (this.filter === this.filters.all) {
+                this.interval.min = null;
+                this.interval.max = null;
+
+                return;
+            }
+
+            this.interval.min = this.dateFormat(addDays(new Date(), Dates[this.filter].min));
+            this.interval.max = this.dateFormat(addDays(new Date(), Dates[this.filter].max), false);
         },
     },
 
