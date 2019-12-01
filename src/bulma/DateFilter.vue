@@ -9,10 +9,10 @@
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
-                        {{ displayLabel(custom) }}
+                        {{ label(custom) }}
                     </strong>
                 </div>
-                <div v-tooltip="compact ? displayLabel(custom) : null"
+                <div v-tooltip="compact ? label(custom) : null"
                     class="filter-wrapper"
                     :class="{ 'has-background-light': compact }">
                     <fade mode="out-in">
@@ -47,16 +47,14 @@
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <datepicker class="picker"
-                                        :placeholder="i18n('From')"
+                                    <datepicker :placeholder="i18n('From')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
                                         v-bind="minBindings"
                                         v-on="minEvents"/>
                                 </div>
                                 <div class="column">
-                                    <datepicker class="picker"
-                                        :placeholder="i18n('To')"
+                                    <datepicker :placeholder="i18n('To')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
                                         v-bind="maxBindings"
@@ -115,8 +113,9 @@ export default {
     },
 
     methods: {
-        displayLabel(custom) {
-            return `${custom ? this.i18n('Between') : this.i18n('When')}${this.name ? `: ${this.name}` : ''}`;
+        label(custom) {
+            return `${custom ? this.i18n('Between') : this.i18n('When')}
+                ${this.name ? `: ${this.name}` : ''}`;
         },
     },
 };
@@ -133,10 +132,6 @@ export default {
         .tag {
             cursor: pointer;
             margin: 2px;
-        }
-
-        .picker {
-            width: 12.6em;
         }
 
         .filter-wrapper {
