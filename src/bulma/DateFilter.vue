@@ -129,6 +129,10 @@ export default {
             padding-top: 0.5em;
         }
 
+        .control {
+            width: 15.5em;
+        }
+
         .tag {
             cursor: pointer;
             margin: 2px;
