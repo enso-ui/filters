@@ -1,6 +1,6 @@
 <template>
     <enso-date-filter alt-input
-        :alt-format="format || meta.dateFormat"
+        :alt-format="altFormat || meta.dateFormat"
         :i18n="i18n"
         :locale="lang"
         v-bind="$attrs"
