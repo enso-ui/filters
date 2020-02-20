@@ -18,5 +18,5 @@ export {
     InputFilter, IntervalFilter, EnsoIntervalFilter, DateFilter, EnsoDateFilter,
     DateIntervalFilter, EnsoDateIntervalFilter, BooleanFilter, SimpleDateFilter,
     VueFilter, EnsoFilter, SelectFilter, EnsoSelectFilter, EnsoInputFilter,
-    EnsoSimpleDateFilter
+    EnsoSimpleDateFilter,
 };
