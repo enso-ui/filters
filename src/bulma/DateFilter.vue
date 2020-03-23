@@ -37,12 +37,13 @@
                         <div v-else
                             key="dates"
                             class="dates-wrapper animated">
-                            <div class="columns is-mobile is-variable is-1 is-centered">
+                            <div class="columns is-mobile is-variable is-0 is-centered">
                                 <div class="column is-narrow">
-                                    <a class="button is-naked">
+                                    <a class="button is-naked has-padding-medium">
                                         <span class="icon is-small"
                                             v-on="backEvents">
-                                            <fa icon="arrow-left"/>
+                                            <fa icon="arrow-left"
+                                                size="sm"/>
                                         </span>
                                     </a>
                                 </div>
@@ -130,7 +131,7 @@ export default {
         }
 
         .control {
-            width: 15.5em;
+            max-width: 13.3em;
         }
 
         .tag {
