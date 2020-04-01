@@ -3,6 +3,7 @@ import {
     format, addDays, startOfDay, endOfDay, addWeeks, startOfWeek, endOfWeek,
     addMonths, startOfMonth, endOfMonth, addYears, startOfYear, endOfYear,
 } from 'date-fns';
+import { lcwords } from '@enso-ui/strings';
 import dateIntervals from './dateIntervals';
 import {
     Intervals, Base, Past, Future, Adjustments,
@@ -50,7 +51,6 @@ export default {
     data: v => ({
         filter: v.value || v.default,
         isFuture: false,
-        regEx: new RegExp(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g),
     }),
 
     computed: {
@@ -99,9 +99,7 @@ export default {
             this.$emit('update', this.sanitizedInterval);
         },
         label(option) {
-            return option.match(this.regEx)
-                .map(word => word.toLowerCase())
-                .join(' ');
+            return lcwords(option);
         },
         adjust() {
             switch (this.filter) {

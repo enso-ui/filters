@@ -26,6 +26,7 @@
   "dependencies": {
     "@enso-ui/datepicker": "1.1.x",
     "@enso-ui/select": "1.2.x",
+    "@enso-ui/strings": "1.0.x",
     "@enso-ui/switch": "1.0.x",
     "@enso-ui/transitions": "1.0.x",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
