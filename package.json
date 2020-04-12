@@ -33,9 +33,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "bulma": "^0.8.0",
-    "date-fns": "^2.0.0-alpha.7",
-    "tooltip.js": "^1.2.0",
-    "v-tooltip": "^2.0.0-rc.32",
+    "date-fns": "^2.0.0",
+    "v-tooltip": "^2.0.0",
     "vue": "^2.5.16",
     "vuex": "^3.0.0"
   },
