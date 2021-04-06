@@ -25,7 +25,12 @@
                             <span v-else
                                 class="filter-label"
                                 :class="option.class">
-                                {{ option.label }}
+                                <template v-if="translatable">
+                                    {{ i18n(option.label) }}
+                                </template>
+                                <template v-else>
+                                    {{ option.label }}
+                                </template>
                             </span>
                         </a>
                     </li>
@@ -38,7 +43,7 @@
                             </span>
                             <span v-if="!icons && offLabel"
                                 class="filter-label">
-                                {{ offLabel }}
+                                {{ i18n(offLabel) }}
                             </span>
                         </a>
                     </li>
@@ -88,6 +93,10 @@ export default {
             },
         },
         readonly: {
+            type: Boolean,
+            default: false,
+        },
+        translatable: {
             type: Boolean,
             default: false,
         },
