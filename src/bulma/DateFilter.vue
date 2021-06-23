@@ -39,7 +39,7 @@
                             class="dates-wrapper animated">
                             <div class="columns is-mobile is-variable is-0 is-centered">
                                 <div class="column is-narrow">
-                                    <a class="button is-naked has-padding-medium">
+                                    <a class="button is-naked p-2">
                                         <span class="icon is-small"
                                             v-on="backEvents">
                                             <fa icon="arrow-left"
