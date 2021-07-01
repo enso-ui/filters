@@ -1,9 +1,9 @@
 <template>
-    <date-filter alt-input
+    <date-filter v-bind="$attrs"
+        alt-input
         :alt-format="altFormat || meta.dateFormat"
         :i18n="i18n"
         :locale="lang"
-        v-bind="$attrs"
         v-on="$listeners"/>
 </template>
 

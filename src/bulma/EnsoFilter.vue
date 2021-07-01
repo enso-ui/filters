@@ -1,6 +1,6 @@
 <template>
-    <vue-filter :i18n="i18n"
-        v-bind="$attrs"
+    <vue-filter v-bind="$attrs"
+        :i18n="i18n"
         v-on="$listeners"/>
 </template>
 

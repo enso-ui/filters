@@ -1,6 +1,6 @@
 <template>
-    <input-filter :i18n="i18n"
-        v-bind="$attrs"
+    <input-filter v-bind="$attrs"
+        :i18n="i18n"
         v-on="$listeners"/>
 </template>
 

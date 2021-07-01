@@ -5,8 +5,8 @@
         <vue-select v-tooltip="compact ? i18n(name) : null"
             class="select-wrapper"
             :class="{'has-background-light': compact}"
-            :i18n="i18n"
             v-bind="$attrs"
+            :i18n="i18n"
             v-on="$listeners"
             ref="select"/>
     </core-select-filter>
