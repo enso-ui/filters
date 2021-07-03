@@ -17,8 +17,8 @@
                             <div class="control has-icons-right">
                                 <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
-                                    :placeholder="i18n(minLabel)"
                                     v-bind="minBindings"
+                                    :placeholder="i18n(minLabel)"
                                     v-on="minEvents">
                                 <span v-if="value.min"
                                     class="icon is-small is-right clear-button"
@@ -31,8 +31,8 @@
                             <div class="control has-icons-right">
                                 <input class="input control"
                                     :class="[{ 'is-danger': invalid }]"
-                                    :placeholder="i18n(maxLabel)"
                                     v-bind="maxBindings"
+                                    :placeholder="i18n(maxLabel)"
                                     v-on="maxEvents">
                                 <span v-if="value.max"
                                     class="icon is-small is-right clear-button"

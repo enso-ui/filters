@@ -15,12 +15,13 @@
                         <div class="column">
                             <div class="control has-icons-right">
                                 <input class="input control"
-                                    :placeholder="i18n(label)"
                                     v-bind="bindings"
+                                    :placeholder="i18n(label)"
                                     v-on="events">
                                 <span v-if="value"
                                     class="icon is-small is-right clear-button"
                                     v-on="clearEvents">
+                                    <a class="delete is-small"/>
                                     <a class="delete is-small"/>
                                 </span>
                             </div>

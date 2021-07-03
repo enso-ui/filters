@@ -21,8 +21,8 @@
                             v-if="!custom">
                             <div class="filter-tags">
                                 <span v-if="direction">
-                                    <vue-switch class="is-small direction"
-                                        v-bind="directionBindings"
+                                    <vue-switch v-bind="directionBindings"
+                                        class="is-small direction"
                                         v-on="directionEvents"/>
                                 </span>
                                 <span class="tag"
@@ -48,17 +48,17 @@
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <datepicker :placeholder="i18n('From')"
+                                    <datepicker v-bind="minBindings"
+                                        :placeholder="i18n('From')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
-                                        v-bind="minBindings"
                                         v-on="minEvents"/>
                                 </div>
                                 <div class="column">
-                                    <datepicker :placeholder="i18n('To')"
+                                    <datepicker v-bind="maxBindings"
+                                        :placeholder="i18n('To')"
                                         :alt-format="altFormat"
                                         :alt-input="altInput"
-                                        v-bind="maxBindings"
                                         v-on="maxEvents"/>
                                 </div>
                             </div>

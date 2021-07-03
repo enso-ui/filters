@@ -14,17 +14,17 @@
                     :class="{ 'has-background-light': compact }">
                     <div class="columns is-mobile is-variable is-1 is-centered">
                         <div class="column">
-                            <datepicker :placeholder="i18n(minLabel)"
+                            <datepicker v-bind="minBindings"
+                                :placeholder="i18n(minLabel)"
                                 :alt-format="altFormat"
                                 :alt-input="altInput"
-                                v-bind="minBindings"
                                 v-on="minEvents"/>
                         </div>
                         <div class="column">
-                            <datepicker :placeholder="i18n(maxLabel)"
+                            <datepicker v-bind="maxBindings"
+                                :placeholder="i18n(maxLabel)"
                                 :alt-format="altFormat"
                                 :alt-input="altInput"
-                                v-bind="maxBindings"
                                 v-on="maxEvents"/>
                         </div>
                     </div>
