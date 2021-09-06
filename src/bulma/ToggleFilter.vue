@@ -14,36 +14,15 @@
             :class="{ 'has-background-light': compact }">
             <div class="tabs is-toggle is-fullwidth filter-tabs">
                 <ul>
-                    <li v-for="(option, index) in options"
-                        :key="index"
-                        :class="{ 'is-active': option.value === value }">
-                        <a @click="update(option.value)">
-                            <span v-if="icons"
-                                :class="['icon', option.class]">
-                                <fa :icon="option.icon"/>
-                            </span>
-                            <span v-else
-                                class="filter-label"
-                                :class="option.class">
+                    <li :class="{ 'is-active': value }">
+                        <a @click="update">
+                            <span class="filter-label">
                                 <template v-if="translatable">
-                                    {{ i18n(option.label) }}
+                                    {{ i18n(label) }}
                                 </template>
                                 <template v-else>
-                                    {{ option.label }}
+                                    {{ label }}
                                 </template>
-                            </span>
-                        </a>
-                    </li>
-                    <li v-if="!hideOff"
-                        :class="{ 'is-active': value === null }">
-                        <a @click="update()">
-                            <span class="icon"
-                                :class="value === null ? 'has-text-danger' : 'has-text-success'">
-                                <fa icon="power-off"/>
-                            </span>
-                            <span v-if="!icons && offLabel"
-                                class="filter-label">
-                                {{ i18n(offLabel) }}
                             </span>
                         </a>
                     </li>
@@ -54,14 +33,10 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 
-library.add(faPowerOff, faLock);
-
 export default {
-    name: 'VueFilter',
+    name: 'ToggleFilter',
 
     directives: { tooltip: VTooltip },
 
@@ -70,27 +45,9 @@ export default {
             type: Boolean,
             default: false,
         },
-        hideOff: {
-            type: Boolean,
-            default: false,
-        },
         i18n: {
             type: Function,
             default: v => v,
-        },
-        icons: {
-            type: Boolean,
-            default: false,
-        },
-        offLabel: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Array,
-            default() {
-                return [];
-            },
         },
         readonly: {
             type: Boolean,
@@ -100,20 +57,24 @@ export default {
             type: Boolean,
             default: false,
         },
+        label: {
+            type: String,
+            default: null,
+        },
         name: {
             type: String,
             default: null,
         },
         value: {
-            type: null,
-            default: null,
+            type: Boolean,
+            required: true,
         },
     },
 
     methods: {
-        update(value = null) {
+        update() {
             if (!this.readonly) {
-                this.$emit('input', value);
+                this.$emit('input', !this.value);
             }
         },
     },
