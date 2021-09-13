@@ -35,10 +35,21 @@ export default {
         keys: null,
     }),
 
+    computed: {
+        dirty() {
+            return this.defaultFilters !== this.stringify(this.filters)
+                || this.defaultIntervals !== this.stringify(this.intervals)
+                || this.defaultParams !== this.stringify(this.params);
+        },
+    },
+
     watch: {
         state: {
             handler: 'persist',
             deep: true,
+        },
+        dirty(dirty) {
+            this.$emit('state-updated', dirty);
         },
     },
 
@@ -68,7 +79,7 @@ export default {
             this.$emit('ready');
         },
         fill(to, from) {
-            Object.keys(to).forEach((key) => {
+            Object.keys(to).forEach(key => {
                 if (to[key] && typeof to[key] === 'object' && !Array.isArray(to[key])) {
                     this.fill(to[key], from[key]);
                 } else {
