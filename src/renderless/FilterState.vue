@@ -48,8 +48,11 @@ export default {
             handler: 'persist',
             deep: true,
         },
-        dirty(dirty) {
-            this.$emit('state-updated', dirty);
+        dirty: {
+            handler(dirty) {
+                this.$emit('state-updated', dirty);
+            },
+            immediate: true,
         },
     },
 
