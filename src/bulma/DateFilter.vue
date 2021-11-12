@@ -1,7 +1,7 @@
 <template>
     <core-date-filter v-bind="$attrs"
         v-on="$listeners">
-        <template v-slot:default="{
+        <template #:default="{
                 filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
                 direction, directionBindings, directionEvents, backEvents, filterEvents,
             }">

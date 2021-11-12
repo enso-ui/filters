@@ -1,7 +1,7 @@
 <template>
     <core-interval-filter v-bind="$attrs"
         v-on="$listeners">
-        <template v-slot:default="{
+        <template #:default="{
                 value, invalid, minBindings, minEvents, maxBindings,
                 maxEvents, minClearEvents, maxClearEvents,
             }">
