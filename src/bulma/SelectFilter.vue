@@ -7,7 +7,6 @@
             :class="{'has-background-light': compact}"
             v-bind="$attrs"
             :i18n="i18n"
-            v-on="$listeners"
             ref="select"/>
     </core-select-filter>
 </template>

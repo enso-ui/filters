@@ -3,8 +3,7 @@
         alt-input
         :alt-format="altFormat || meta.dateFormat"
         :i18n="i18n"
-        :locale="lang"
-        v-on="$listeners"/>
+        :locale="lang"/>
 </template>
 
 <script>

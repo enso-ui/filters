@@ -165,7 +165,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             backEvents: {
                 click: () => this.set(this.default),
             },

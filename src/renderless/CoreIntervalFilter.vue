@@ -35,7 +35,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             invalid: this.invalid,
             value: this.value,
             minBindings: {

@@ -1,7 +1,6 @@
 <template>
-    <core-date-interval-filter v-bind="$attrs"
-        v-on="$listeners">
-        <template #:default="{ minBindings, minEvents, maxBindings, maxEvents }">
+    <core-date-interval-filter v-bind="$attrs"   >
+        <template #default="{ minBindings, minEvents, maxBindings, maxEvents }">
             <div class="date-interval-filter is-paddingless">
                 <div class="header has-background-light has-text-centered"
                     v-if="!compact">

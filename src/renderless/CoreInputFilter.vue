@@ -14,7 +14,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             value: this.value,
             bindings: {
                 value: this.value,

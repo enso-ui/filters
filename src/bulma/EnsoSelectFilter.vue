@@ -6,7 +6,6 @@
             class="select-wrapper"
             :class="{'has-background-light': compact}"
             v-bind="$attrs"
-            v-on="$listeners"
             ref="select"/>
     </core-select-filter>
 </template>

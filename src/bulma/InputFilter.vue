@@ -1,7 +1,6 @@
 <template>
-    <core-input-filter v-bind="$attrs"
-        v-on="$listeners">
-        <template #:default="{
+    <core-input-filter v-bind="$attrs"   >
+        <template #default="{
                 value, bindings, events, clearEvents,
             }">
             <div class="interval-filter is-paddingless">
