@@ -33,12 +33,15 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { VTooltip } from 'v-tooltip';
 
 export default {
     name: 'ToggleFilter',
 
     directives: { tooltip: VTooltip },
+
+    components: { Fa },
 
     props: {
         compact: {

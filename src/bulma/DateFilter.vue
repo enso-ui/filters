@@ -1,5 +1,5 @@
 <template>
-    <core-date-filter v-bind="$attrs"   >
+    <core-date-filter v-bind="$attrs">
         <template #default="{
                 filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
                 direction, directionBindings, directionEvents, backEvents, filterEvents,
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
@@ -86,7 +87,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        CoreDateFilter, Fade, Datepicker, VueSwitch,
+        CoreDateFilter, Fa, Fade, Datepicker, VueSwitch,
     },
 
     props: {
@@ -96,7 +97,7 @@ export default {
         },
         altInput: {
             type: Boolean,
-            defaut: false,
+            default: false,
         },
         compact: {
             type: Boolean,

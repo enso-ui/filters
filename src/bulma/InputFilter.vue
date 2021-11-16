@@ -1,5 +1,5 @@
 <template>
-    <core-input-filter v-bind="$attrs"   >
+    <core-input-filter v-bind="$attrs">
         <template #default="{
                 value, bindings, events, clearEvents,
             }">

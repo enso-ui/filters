@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
@@ -64,6 +65,8 @@ export default {
     name: 'VueFilter',
 
     directives: { tooltip: VTooltip },
+
+    components: { Fa },
 
     props: {
         compact: {

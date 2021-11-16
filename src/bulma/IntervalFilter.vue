@@ -1,5 +1,5 @@
 <template>
-    <core-interval-filter v-bind="$attrs"   >
+    <core-interval-filter v-bind="$attrs">
         <template #default="{
                 value, invalid, minBindings, minEvents, maxBindings,
                 maxEvents, minClearEvents, maxClearEvents,
