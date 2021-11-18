@@ -3,7 +3,7 @@ export default {
     name: 'CoreInputFilter',
 
     props: {
-        value: {
+        modelValue: {
             type: String,
             default: 'text',
         },
@@ -13,21 +13,23 @@ export default {
         },
     },
 
+    emits: ['update:modelValue'],
+
     render() {
         return this.$slots.default({
-            value: this.value,
+            modelValue: this.modelValue,
             bindings: {
-                value: this.value,
+                modelValue: this.modelValue,
                 type: this.type,
             },
             events: {
-                input: (e) => {
-                    this.$emit('input', e.target.value);
+                input: e => {
+                    this.$emit('update:modelValue', e.target.value);
                 },
             },
             clearEvents: {
                 click: () => {
-                    this.$emit('input', null);
+                    this.$emit('update:modelValue', null);
                 },
             },
         });

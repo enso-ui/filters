@@ -16,7 +16,7 @@
                 <ul>
                     <li v-for="(option, index) in options"
                         :key="index"
-                        :class="{ 'is-active': option.value === value }">
+                        :class="{ 'is-active': option.value === modelValue }">
                         <a @click="update(option.value)">
                             <span v-if="icons"
                                 :class="['icon', option.class]">
@@ -35,10 +35,12 @@
                         </a>
                     </li>
                     <li v-if="!hideOff"
-                        :class="{ 'is-active': value === null }">
+                        :class="{ 'is-active': modelValue === null }">
                         <a @click="update()">
                             <span class="icon"
-                                :class="value === null ? 'has-text-danger' : 'has-text-success'">
+                                :class="modelValue === null
+                                    ? 'has-text-danger'
+                                    : 'has-text-success'">
                                 <fa icon="power-off"/>
                             </span>
                             <span v-if="!icons && offLabel"
@@ -107,16 +109,18 @@ export default {
             type: String,
             default: null,
         },
-        value: {
+        modelValue: {
             type: null,
             default: null,
         },
     },
 
+    emits: ['update:modelValue'],
+
     methods: {
         update(value = null) {
             if (!this.readonly) {
-                this.$emit('input', value);
+                this.$emit('update:modelValue', value);
             }
         },
     },

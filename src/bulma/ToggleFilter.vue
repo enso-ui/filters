@@ -14,7 +14,7 @@
             :class="{ 'has-background-light': compact }">
             <div class="tabs is-toggle is-fullwidth filter-tabs">
                 <ul>
-                    <li :class="{ 'is-active': value }">
+                    <li :class="{ 'is-active': modelValue }">
                         <a @click="update">
                             <span class="filter-label">
                                 <template v-if="translatable">
@@ -68,16 +68,18 @@ export default {
             type: String,
             default: null,
         },
-        value: {
+        modelValue: {
             type: Boolean,
             required: true,
         },
     },
 
+    emits: ['change', 'update:modelValue'],
+
     methods: {
         update() {
             if (!this.readonly) {
-                this.$emit('input', !this.value);
+                this.$emit('update:modelValue', !this.modelValue);
             }
         },
     },

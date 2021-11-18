@@ -29,10 +29,6 @@ export default {
             type: String,
             default: null,
         },
-        value: {
-            type: null,
-            default: null,
-        },
     },
 };
 

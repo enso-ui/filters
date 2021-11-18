@@ -3,7 +3,7 @@ export default {
     name: 'CoreIntervalFilter',
 
     props: {
-        value: {
+        modelValue: {
             type: Object,
             default: () => ({
                 min: null,
@@ -18,55 +18,57 @@ export default {
         },
     },
 
+    emits: ['change', 'update:modelValue'],
+
     computed: {
         invalid() {
-            return ![null, ''].includes(this.value.min)
-                && ![null, ''].includes(this.value.max)
+            return ![null, ''].includes(this.modelValue.min)
+                && ![null, ''].includes(this.modelValue.max)
                 && (this.type === 'number'
-                    ? Number.parseFloat(this.value.min) > Number.parseFloat(this.value.max)
-                    : this.value.min > this.value.max);
+                    ? Number.parseFloat(this.modelValue.min) > Number.parseFloat(this.modelValue.max)
+                    : this.modelValue.min > this.modelValue.max);
         },
     },
 
     methods: {
         update() {
-            this.$emit('input', this.value);
+            this.$emit('update:modelValue', this.modelValue);
         },
     },
 
     render() {
         return this.$slots.default({
             invalid: this.invalid,
-            value: this.value,
+            modelValue: this.modelValue,
             minBindings: {
-                value: this.value.min,
+                modelValue: this.modelValue.min,
                 type: this.type,
             },
             minEvents: {
-                input: (e) => {
-                    this.value.min = e.target.value;
+                input: e => {
+                    this.modelValue.min = e.target.value;
                     this.update();
                 },
             },
             maxBindings: {
-                value: this.value.max,
+                value: this.modelValue.max,
                 type: this.type,
             },
             maxEvents: {
-                input: (e) => {
-                    this.value.max = e.target.value;
+                input: e => {
+                    this.modelValue.max = e.target.value;
                     this.update();
                 },
             },
             minClearEvents: {
                 click: () => {
-                    this.value.min = null;
+                    this.modelValue.min = null;
                     this.update();
                 },
             },
             maxClearEvents: {
                 click: () => {
-                    this.value.max = null;
+                    this.modelValue.max = null;
                     this.update();
                 },
             },

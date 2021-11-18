@@ -35,7 +35,7 @@ export default {
             type: Boolean,
             default: false,
         },
-        value: {
+        modelValue: {
             type: String,
             default: null,
             validator: v => Base.concat(Past)
@@ -48,8 +48,10 @@ export default {
         },
     },
 
+    emits: ['update', 'update:modelValue'],
+
     data: v => ({
-        filter: v.value || v.default,
+        filter: v.modelValue || v.default,
         isFuture: false,
     }),
 
@@ -74,7 +76,7 @@ export default {
     },
 
     watch: {
-        value(value) {
+        modelValue(value) {
             this.filter = value;
             this.update();
         },
@@ -91,7 +93,7 @@ export default {
     methods: {
         set(filter) {
             this.filter = filter;
-            this.$emit('input', filter);
+            this.$emit('update:modelValue', filter);
             this.update();
         },
         update() {
@@ -172,10 +174,10 @@ export default {
             custom: this.custom,
             direction: this.direction,
             directionBindings: {
-                value: this.isFuture,
+                modelValue: this.isFuture,
             },
             directionEvents: {
-                input: (e) => {
+                input: e => {
                     this.isFuture = e;
                     this.filter = 'today';
                 },
@@ -191,7 +193,7 @@ export default {
                 click: () => this.set(type),
             }),
             minBindings: {
-                value: this.interval.min,
+                modelValue: this.interval.min,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
@@ -199,13 +201,13 @@ export default {
                 max: this.interval.max,
             },
             minEvents: {
-                input: (e) => {
+                input: e => {
                     this.interval.min = e;
                     this.update();
                 },
             },
             maxBindings: {
-                value: this.interval.max,
+                modelValue: this.interval.max,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
@@ -213,7 +215,7 @@ export default {
                 min: this.interval.min,
             },
             maxEvents: {
-                input: (e) => {
+                input: e => {
                     this.interval.max = e;
                     this.update();
                 },
