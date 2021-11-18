@@ -1,5 +1,5 @@
 <template>
-    <core-select-filter :compact="compact"
+    <base-select-filter :compact="compact"
         :i18n="i18n"
         :name="name">
         <enso-select v-tooltip="compact ? i18n(name) : null"
@@ -7,20 +7,20 @@
             :class="{'has-background-light': compact}"
             v-bind="$attrs"
             ref="select"/>
-    </core-select-filter>
+    </base-select-filter>
 </template>
 
 <script>
 import { VTooltip } from 'v-tooltip';
 import { EnsoSelect } from '@enso-ui/select/bulma';
-import CoreSelectFilter from './CoreSelectFilter.vue';
+import BaseSelectFilter from './BaseSelectFilter.vue';
 
 export default {
     name: 'EnsoSelectFilter',
 
     directives: { tooltip: VTooltip },
 
-    components: { CoreSelectFilter, EnsoSelect },
+    components: { BaseSelectFilter, EnsoSelect },
 
     inject: ['i18n'],
 

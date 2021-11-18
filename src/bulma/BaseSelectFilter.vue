@@ -12,7 +12,7 @@
 import { VTooltip } from 'v-tooltip';
 
 export default {
-    name: 'CoreSelectFilter',
+    name: 'BaseSelectFilter',
 
     directives: { tooltip: VTooltip },
 
