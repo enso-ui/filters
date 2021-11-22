@@ -6,6 +6,8 @@ export default {
 
     mixins: [dateIntervals],
 
+    emits: ['update'],
+
     methods: {
         update() {
             this.$emit('update', this.sanitizedInterval);
@@ -15,27 +17,27 @@ export default {
     render() {
         return this.$slots.default({
             minBindings: {
-                value: this.interval.min,
+                modelValue: this.interval.min,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
                 max: this.interval.max,
             },
             minEvents: {
-                input: (e) => {
+                'update:modelValue': e => {
                     this.interval.min = e;
                     this.update();
                 },
             },
             maxBindings: {
-                value: this.interval.max,
+                modelValue: this.interval.max,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
                 min: this.interval.min,
             },
             maxEvents: {
-                input: (e) => {
+                'update:modelValue': e => {
                     this.interval.max = e;
                     this.update();
                 },

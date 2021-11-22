@@ -45,17 +45,17 @@ export default {
                 type: this.type,
             },
             minEvents: {
-                input: e => {
+                'update:modelValue': e => {
                     this.modelValue.min = e.target.value;
                     this.update();
                 },
             },
             maxBindings: {
-                value: this.modelValue.max,
+                modelValue: this.modelValue.max,
                 type: this.type,
             },
             maxEvents: {
-                input: e => {
+                'update:modelValue': e => {
                     this.modelValue.max = e.target.value;
                     this.update();
                 },
