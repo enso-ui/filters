@@ -14,6 +14,8 @@ export default {
 
     mixins: [dateIntervals],
 
+    inheritAttrs: false,
+
     props: {
         default: {
             type: String,

@@ -27,6 +27,8 @@ export default {
         },
     },
 
+    emits: ['ready', 'state-updated'],
+
     data: () => ({
         defaultFilters: null,
         defaultIntervals: null,

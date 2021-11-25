@@ -1,10 +1,10 @@
 <template>
-    <core-date-filter v-bind="$attrs">
-        <template #default="{
-                filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
-                direction, directionBindings, directionEvents, backEvents, filterEvents,
-            }">
-            <div class="date-filter is-paddingless">
+    <div class="date-filter is-paddingless">
+        <core-date-filter v-bind="$attrs">
+            <template #default="{
+                    filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
+                    direction, directionBindings, directionEvents, backEvents, filterEvents,
+                }">
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
@@ -64,9 +64,9 @@
                         </div>
                     </fade>
                 </div>
-            </div>
-        </template>
-    </core-date-filter>
+            </template>
+        </core-date-filter>
+    </div>
 </template>
 
 <script>
