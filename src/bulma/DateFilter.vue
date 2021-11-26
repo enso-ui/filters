@@ -70,10 +70,11 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
+import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
 import VueSwitch from '@enso-ui/switch/bulma';

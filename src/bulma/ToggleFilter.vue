@@ -33,8 +33,9 @@
 </template>
 
 <script>
-import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 
 export default {
     name: 'ToggleFilter',

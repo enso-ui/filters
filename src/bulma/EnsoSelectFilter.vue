@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import { EnsoSelect } from '@enso-ui/select/bulma';
 import BaseSelectFilter from './BaseSelectFilter.vue';

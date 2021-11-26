@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import CoreDateIntervalFilter from '../renderless/CoreDateIntervalFilter.vue';

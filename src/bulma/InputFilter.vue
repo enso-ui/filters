@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import CoreInputFilter from '../renderless/CoreInputFilter.vue';
 
