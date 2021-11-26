@@ -1,16 +1,16 @@
 <template>
-    <core-interval-filter v-bind="$attrs">
-        <template #default="{
-                value, invalid, minBindings, minEvents, maxBindings,
-                maxEvents, minClearEvents, maxClearEvents,
-            }">
-            <div class="interval-filter is-paddingless">
-                <div v-if="!compact"
-                    class="header has-text-centered has-background-light">
-                    <b>{{ i18n(name) }}</b>
-                </div>
-                <div v-tooltip="compact ? i18n(name) : null"
-                    :class="['input-wrapper', {'has-background-light': compact}]">
+    <div class="interval-filter is-paddingless">
+        <div v-if="!compact"
+            class="header has-text-centered has-background-light">
+            <b>{{ i18n(name) }}</b>
+        </div>
+        <div v-tooltip="compact ? i18n(name) : null"
+            :class="['input-wrapper', {'has-background-light': compact}]">
+            <core-interval-filter v-bind="$attrs">
+                <template #default="{
+                        value, invalid, minBindings, minEvents, maxBindings,
+                        maxEvents, minClearEvents, maxClearEvents,
+                    }">
                     <div class="columns is-mobile">
                         <div class="column">
                             <div class="control has-icons-right">
@@ -41,10 +41,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </template>
-    </core-interval-filter>
+                </template>
+            </core-interval-filter>
+        </div>
+    </div>
 </template>
 
 <script>

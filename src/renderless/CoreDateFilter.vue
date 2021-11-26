@@ -179,7 +179,7 @@ export default {
                 modelValue: this.isFuture,
             },
             directionEvents: {
-                input: e => {
+                'update:modelValue': e => {
                     this.isFuture = e;
                     this.filter = 'today';
                 },
@@ -203,7 +203,7 @@ export default {
                 max: this.interval.max,
             },
             minEvents: {
-                input: e => {
+                'update:modelValue': e => {
                     this.interval.min = e;
                     this.update();
                 },
@@ -217,7 +217,7 @@ export default {
                 min: this.interval.min,
             },
             maxEvents: {
-                input: e => {
+                'update:modelValue': e => {
                     this.interval.max = e;
                     this.update();
                 },

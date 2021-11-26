@@ -1,16 +1,16 @@
 <template>
-    <core-date-interval-filter v-bind="$attrs">
-        <template #default="{ minBindings, minEvents, maxBindings, maxEvents }">
-            <div class="date-interval-filter is-paddingless">
-                <div class="header has-background-light has-text-centered"
-                    v-if="!compact">
-                    <strong>
-                        {{ i18n(name) }}
-                    </strong>
-                </div>
-                <div v-tooltip="compact ? i18n(name) : null"
-                    class="dates-wrapper"
-                    :class="{ 'has-background-light': compact }">
+    <div class="date-interval-filter is-paddingless">
+        <div class="header has-background-light has-text-centered"
+            v-if="!compact">
+            <strong>
+                {{ i18n(name) }}
+            </strong>
+        </div>
+        <div v-tooltip="compact ? i18n(name) : null"
+            class="dates-wrapper"
+            :class="{ 'has-background-light': compact }">
+            <core-date-interval-filter v-bind="$attrs">
+                <template #default="{ minBindings, minEvents, maxBindings, maxEvents }">
                     <div class="columns is-mobile is-variable is-1 is-centered">
                         <div class="column">
                             <datepicker v-bind="minBindings"
@@ -27,10 +27,10 @@
                                 v-on="maxEvents"/>
                         </div>
                     </div>
-                </div>
-            </div>
-        </template>
-    </core-date-interval-filter>
+                </template>
+            </core-date-interval-filter>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
         },
         altInput: {
             type: Boolean,
-            defaut: false,
+            default: false,
         },
         compact: {
             type: Boolean,
