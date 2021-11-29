@@ -8,6 +8,8 @@ export default {
 
     emits: ['update'],
 
+    inheritAttrs: false,
+
     methods: {
         update() {
             this.$emit('update', this.sanitizedInterval);

@@ -15,6 +15,8 @@ export default {
 
     emits: ['update:modelValue'],
 
+    inheritAttrs: false,
+
     render() {
         return this.$slots.default({
             modelValue: this.modelValue,

@@ -2,10 +2,9 @@
     <base-select-filter :compact="compact"
         :i18n="i18n"
         :name="name">
-        <enso-select v-tooltip="compact ? i18n(name) : null"
-            class="select-wrapper"
+        <enso-select v-bind="{...$attrs, class: 'select-wrapper'}"
             :class="{'has-background-light': compact}"
-            v-bind="$attrs"
+            v-tooltip="compact ? i18n(name) : null"
             ref="select"/>
     </base-select-filter>
 </template>

@@ -2,11 +2,10 @@
     <base-select-filter :compact="compact"
         :i18n="i18n"
         :name="name">
-        <vue-select v-tooltip="compact ? i18n(name) : null"
-            class="select-wrapper"
+        <vue-select v-bind="{...$attrs, class: 'select-wrapper'}"
             :class="{'has-background-light': compact}"
-            v-bind="$attrs"
             :i18n="i18n"
+            v-tooltip="compact ? i18n(name) : null"
             ref="select"/>
     </base-select-filter>
 </template>

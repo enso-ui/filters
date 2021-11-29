@@ -20,6 +20,8 @@ export default {
 
     emits: ['change', 'update:modelValue'],
 
+    inheritAttrs: false,
+
     computed: {
         invalid() {
             return ![null, ''].includes(this.modelValue.min)
