@@ -8,7 +8,7 @@
             :class="['input-wrapper', {'has-background-light': compact}]">
             <core-interval-filter v-bind="$attrs">
                 <template #default="{
-                        value, invalid, minBindings, minEvents, maxBindings,
+                        modelValue, invalid, minBindings, minEvents, maxBindings,
                         maxEvents, minClearEvents, maxClearEvents,
                     }">
                     <div class="columns is-mobile">
@@ -19,7 +19,7 @@
                                     v-bind="minBindings"
                                     :placeholder="i18n(minLabel)"
                                     v-on="minEvents">
-                                <span v-if="value.min"
+                                <span v-if="modelValue.min"
                                     class="icon is-small is-right clear-button"
                                     v-on="minClearEvents">
                                     <a class="delete is-small"/>
@@ -33,7 +33,7 @@
                                     v-bind="maxBindings"
                                     :placeholder="i18n(maxLabel)"
                                     v-on="maxEvents">
-                                <span v-if="value.max"
+                                <span v-if="modelValue.max"
                                     class="icon is-small is-right clear-button"
                                     v-on="maxClearEvents">
                                     <a class="delete is-small"/>

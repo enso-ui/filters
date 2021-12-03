@@ -47,7 +47,7 @@ export default {
                 type: this.type,
             },
             minEvents: {
-                'update:modelValue': e => {
+                input: e => {
                     this.modelValue.min = e.target.value;
                     this.update();
                 },
@@ -57,7 +57,7 @@ export default {
                 type: this.type,
             },
             maxEvents: {
-                'update:modelValue': e => {
+                input: e => {
                     this.modelValue.max = e.target.value;
                     this.update();
                 },
