@@ -17,7 +17,7 @@ const Intervals = {
 
 const Base = [
     Intervals.today, Intervals.thisWeek, Intervals.thisMonth,
-    Intervals.thisYear, Intervals.custom, Intervals.all,
+    Intervals.thisYear, Intervals.all, Intervals.custom,
 ];
 
 const Past = [Intervals.yesterday, Intervals.lastWeek, Intervals.lastMonth, Intervals.lastYear];
