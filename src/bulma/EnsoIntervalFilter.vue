@@ -1,5 +1,5 @@
 <template>
-    <interval-filter v-bind="$attrs"
+    <interval-filter
         :i18n="i18n"/>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <input-filter v-bind="$attrs"
+    <input-filter
         :i18n="i18n"/>
 </template>
 

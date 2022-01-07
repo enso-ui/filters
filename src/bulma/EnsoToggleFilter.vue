@@ -1,5 +1,5 @@
 <template>
-    <toggle-filter v-bind="$attrs"
+    <toggle-filter
         :i18n="i18n"/>
 </template>
 

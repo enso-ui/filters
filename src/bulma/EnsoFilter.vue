@@ -1,5 +1,5 @@
 <template>
-    <vue-filter v-bind="$attrs"
+    <vue-filter
         :i18n="i18n"/>
 </template>
 

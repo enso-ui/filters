@@ -1,5 +1,6 @@
 <template>
-    <base-select-filter :compact="compact"
+    <base-select-filter :class="$attrs.class"
+        :compact="compact"
         :i18n="i18n"
         :name="name">
         <vue-select v-bind="{...$attrs, class: 'select-wrapper'}"
@@ -22,6 +23,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: { BaseSelectFilter, VueSelect },
+
+    inheritAttrs: false,
 
     props: {
         compact: {

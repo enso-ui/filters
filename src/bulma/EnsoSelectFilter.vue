@@ -1,5 +1,6 @@
 <template>
-    <base-select-filter :compact="compact"
+    <base-select-filter :class="$attrs.class"
+        :compact="compact"
         :i18n="i18n"
         :name="name">
         <enso-select v-bind="{...$attrs, class: 'select-wrapper'}"
@@ -23,6 +24,8 @@ export default {
     components: { BaseSelectFilter, EnsoSelect },
 
     inject: ['i18n'],
+
+    inheritAttrs: false,
 
     props: {
         compact: {

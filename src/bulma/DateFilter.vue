@@ -1,5 +1,6 @@
 <template>
-    <div class="date-filter is-paddingless">
+    <div class="date-filter is-paddingless"
+        :class="$attrs.class">
         <core-date-filter v-bind="$attrs">
             <template #default="{
                     filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,

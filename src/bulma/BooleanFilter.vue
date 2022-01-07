@@ -1,6 +1,5 @@
 <template>
-    <vue-filter v-bind="$attrs"
-        icons
+    <vue-filter icons
         :options="options"/>
 </template>
 

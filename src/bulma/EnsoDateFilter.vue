@@ -1,5 +1,5 @@
 <template>
-    <date-filter v-bind="$attrs"
+    <date-filter
         alt-input
         :alt-format="altFormat || meta.dateFormat"
         :i18n="i18n"

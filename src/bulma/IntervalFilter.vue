@@ -1,5 +1,6 @@
 <template>
-    <div class="interval-filter is-paddingless">
+    <div class="interval-filter is-paddingless"
+        :class="$attrs.class">
         <div v-if="!compact"
             class="header has-text-centered has-background-light">
             <b>{{ i18n(name) }}</b>
@@ -58,6 +59,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: { CoreIntervalFilter },
+
+    inheritAttrs: false,
 
     props: {
         compact: {
