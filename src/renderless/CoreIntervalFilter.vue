@@ -2,6 +2,8 @@
 export default {
     name: 'CoreIntervalFilter',
 
+    inheritAttrs: false,
+
     props: {
         modelValue: {
             type: Object,
@@ -20,14 +22,13 @@ export default {
 
     emits: ['change', 'update:modelValue'],
 
-    inheritAttrs: false,
-
     computed: {
         invalid() {
             return ![null, ''].includes(this.modelValue.min)
                 && ![null, ''].includes(this.modelValue.max)
                 && (this.type === 'number'
-                    ? Number.parseFloat(this.modelValue.min) > Number.parseFloat(this.modelValue.max)
+                    ? Number.parseFloat(this.modelValue.min)
+                        > Number.parseFloat(this.modelValue.max)
                     : this.modelValue.min > this.modelValue.max);
         },
     },

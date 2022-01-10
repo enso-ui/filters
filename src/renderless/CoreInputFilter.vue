@@ -2,6 +2,8 @@
 export default {
     name: 'CoreInputFilter',
 
+    inheritAttrs: false,
+
     props: {
         modelValue: {
             type: String,
@@ -14,8 +16,6 @@ export default {
     },
 
     emits: ['update:modelValue'],
-
-    inheritAttrs: false,
 
     render() {
         return this.$slots.default({

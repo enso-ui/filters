@@ -2,7 +2,7 @@
 import {
     compareAsc, format, addDays, startOfDay, endOfDay, addWeeks,
     startOfWeek, endOfWeek, addMonths, startOfMonth, endOfMonth,
-    addYears, startOfYear, endOfYear, parse
+    addYears, startOfYear, endOfYear, parse,
 } from 'date-fns';
 import { lcwords } from '@enso-ui/strings';
 import {
@@ -115,33 +115,33 @@ export default {
     methods: {
         update(filter = this.filter) {
             switch (filter) {
-                case Intervals.today:
-                case Intervals.yesterday:
-                case Intervals.tomorrow:
-                    this.daily();
-                    break;
-                case Intervals.lastWeek:
-                case Intervals.thisWeek:
-                case Intervals.nextWeek:
-                    this.weekly();
-                    break;
-                case Intervals.lastMonth:
-                case Intervals.thisMonth:
-                case Intervals.nextMonth:
-                    this.monthly();
-                    break;
-                case Intervals.lastYear:
-                case Intervals.thisYear:
-                case Intervals.nextYear:
-                    this.yearly();
-                    break;
-                case Intervals.all:
-                    this.all();
-                    break;
-                case Intervals.custom:
-                    break;
-                default:
-                    throw Error('Unknown Interval');
+            case Intervals.today:
+            case Intervals.yesterday:
+            case Intervals.tomorrow:
+                this.daily();
+                break;
+            case Intervals.lastWeek:
+            case Intervals.thisWeek:
+            case Intervals.nextWeek:
+                this.weekly();
+                break;
+            case Intervals.lastMonth:
+            case Intervals.thisMonth:
+            case Intervals.nextMonth:
+                this.monthly();
+                break;
+            case Intervals.lastYear:
+            case Intervals.thisYear:
+            case Intervals.nextYear:
+                this.yearly();
+                break;
+            case Intervals.all:
+                this.all();
+                break;
+            case Intervals.custom:
+                break;
+            default:
+                throw Error('Unknown Interval');
             }
         },
         label(option) {
