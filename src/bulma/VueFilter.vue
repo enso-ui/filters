@@ -16,7 +16,7 @@
                 <ul>
                     <li v-for="(option, index) in options"
                         :key="index"
-                        :class="{ 'is-active': option.value === value }">
+                        :class="{ 'is-active': option.value === modelValue }">
                         <a @click="update(option.value)">
                             <span v-if="icons"
                                 :class="['icon', option.class]">
@@ -35,10 +35,12 @@
                         </a>
                     </li>
                     <li v-if="!hideOff"
-                        :class="{ 'is-active': value === null }">
+                        :class="{ 'is-active': modelValue === null }">
                         <a @click="update()">
                             <span class="icon"
-                                :class="value === null ? 'has-text-danger' : 'has-text-success'">
+                                :class="modelValue === null
+                                    ? 'has-text-danger'
+                                    : 'has-text-success'">
                                 <fa icon="power-off"/>
                             </span>
                             <span v-if="!icons && offLabel"
@@ -54,9 +56,11 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
+import { VTooltip } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
-import { VTooltip } from 'v-tooltip';
 
 library.add(faPowerOff, faLock);
 
@@ -64,6 +68,8 @@ export default {
     name: 'VueFilter',
 
     directives: { tooltip: VTooltip },
+
+    components: { Fa },
 
     props: {
         compact: {
@@ -104,16 +110,18 @@ export default {
             type: String,
             default: null,
         },
-        value: {
+        modelValue: {
             type: null,
             default: null,
         },
     },
 
+    emits: ['update:modelValue'],
+
     methods: {
         update(value = null) {
             if (!this.readonly) {
-                this.$emit('input', value);
+                this.$emit('update:modelValue', value);
             }
         },
     },

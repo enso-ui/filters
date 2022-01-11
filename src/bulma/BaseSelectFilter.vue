@@ -9,10 +9,11 @@
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 
 export default {
-    name: 'CoreSelectFilter',
+    name: 'BaseSelectFilter',
 
     directives: { tooltip: VTooltip },
 
@@ -27,10 +28,6 @@ export default {
         },
         name: {
             type: String,
-            default: null,
-        },
-        value: {
-            type: null,
             default: null,
         },
     },

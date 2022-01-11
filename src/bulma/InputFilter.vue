@@ -1,18 +1,18 @@
 <template>
-    <core-input-filter v-bind="$attrs"
-        v-on="$listeners">
-        <template v-slot:default="{
-                value, bindings, events, clearEvents,
-            }">
-            <div class="interval-filter is-paddingless">
-                <div v-if="!compact"
-                    class="header has-text-centered has-background-light">
-                    <b>{{ i18n(name) }}</b>
-                </div>
-                <div v-tooltip="compact ? i18n(name) : null"
-                    :class="['input-wrapper', {'has-background-light': compact}]">
-                    <div class="columns is-mobile">
-                        <div class="column">
+    <div class="interval-filter is-paddingless"
+        :class="$attrs.class">
+        <div v-if="!compact"
+            class="header has-text-centered has-background-light">
+            <b>{{ i18n(name) }}</b>
+        </div>
+        <div v-tooltip="compact ? i18n(name) : null"
+            :class="['input-wrapper', {'has-background-light': compact}]">
+            <div class="columns is-mobile">
+                <div class="column">
+                    <core-input-filter v-bind="$attrs">
+                        <template #default="{
+                                value, bindings, events, clearEvents,
+                            }">
                             <div class="control has-icons-right">
                                 <input class="input control"
                                     v-bind="bindings"
@@ -25,15 +25,16 @@
                                     <a class="delete is-small"/>
                                 </span>
                             </div>
-                        </div>
-                    </div>
+                        </template>
+                    </core-input-filter>
                 </div>
             </div>
-        </template>
-    </core-input-filter>
+        </div>
+    </div>
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import CoreInputFilter from '../renderless/CoreInputFilter.vue';
 
@@ -43,6 +44,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: { CoreInputFilter },
+
+    inheritAttrs: false,
 
     props: {
         compact: {

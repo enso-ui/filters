@@ -1,29 +1,31 @@
 <template>
-    <core-select-filter :compact="compact"
+    <base-select-filter :class="$attrs.class"
+        :compact="compact"
         :i18n="i18n"
         :name="name">
-        <enso-select v-tooltip="compact ? i18n(name) : null"
-            class="select-wrapper"
+        <enso-select v-bind="{...$attrs, class: 'select-wrapper'}"
             :class="{'has-background-light': compact}"
-            v-bind="$attrs"
-            v-on="$listeners"
+            v-tooltip="compact ? i18n(name) : null"
             ref="select"/>
-    </core-select-filter>
+    </base-select-filter>
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import { EnsoSelect } from '@enso-ui/select/bulma';
-import CoreSelectFilter from './CoreSelectFilter.vue';
+import BaseSelectFilter from './BaseSelectFilter.vue';
 
 export default {
     name: 'EnsoSelectFilter',
 
     directives: { tooltip: VTooltip },
 
-    components: { CoreSelectFilter, EnsoSelect },
+    components: { BaseSelectFilter, EnsoSelect },
 
     inject: ['i18n'],
+
+    inheritAttrs: false,
 
     props: {
         compact: {

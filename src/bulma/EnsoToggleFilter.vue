@@ -1,7 +1,6 @@
 <template>
-    <toggle-filter v-bind="$attrs"
-        :i18n="i18n"
-        v-on="$listeners"/>
+    <toggle-filter
+        :i18n="i18n"/>
 </template>
 
 <script>

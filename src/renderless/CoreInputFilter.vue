@@ -2,8 +2,10 @@
 export default {
     name: 'CoreInputFilter',
 
+    inheritAttrs: false,
+
     props: {
-        value: {
+        modelValue: {
             type: String,
             default: 'text',
         },
@@ -13,21 +15,23 @@ export default {
         },
     },
 
+    emits: ['update:modelValue'],
+
     render() {
-        return this.$scopedSlots.default({
-            value: this.value,
+        return this.$slots.default({
+            modelValue: this.modelValue,
             bindings: {
-                value: this.value,
+                modelValue: this.modelValue,
                 type: this.type,
             },
             events: {
-                input: (e) => {
-                    this.$emit('input', e.target.value);
+                input: e => {
+                    this.$emit('update:modelValue', e.target.value);
                 },
             },
             clearEvents: {
                 click: () => {
-                    this.$emit('input', null);
+                    this.$emit('update:modelValue', null);
                 },
             },
         });

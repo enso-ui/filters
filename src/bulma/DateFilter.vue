@@ -1,11 +1,11 @@
 <template>
-    <core-date-filter v-bind="$attrs"
-        v-on="$listeners">
-        <template v-slot:default="{
-                filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
-                direction, directionBindings, directionEvents, backEvents, filterEvents,
-            }">
-            <div class="date-filter is-paddingless">
+    <div class="date-filter is-paddingless"
+        :class="$attrs.class">
+        <core-date-filter v-bind="$attrs">
+            <template #default="{
+                    filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
+                    direction, directionBindings, directionEvents, backEvents, filterEvents,
+                }">
                 <div class="header has-text-centered has-background-light"
                     v-if="!compact">
                     <strong>
@@ -65,15 +65,17 @@
                         </div>
                     </fade>
                 </div>
-            </div>
-        </template>
-    </core-date-filter>
+            </template>
+        </core-date-filter>
+    </div>
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
+import { VTooltip } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { VTooltip } from 'v-tooltip';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
 import VueSwitch from '@enso-ui/switch/bulma';
@@ -87,7 +89,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        CoreDateFilter, Fade, Datepicker, VueSwitch,
+        CoreDateFilter, Fa, Fade, Datepicker, VueSwitch,
     },
 
     props: {
@@ -97,7 +99,7 @@ export default {
         },
         altInput: {
             type: Boolean,
-            defaut: false,
+            default: false,
         },
         compact: {
             type: Boolean,

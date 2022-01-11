@@ -27,12 +27,15 @@ export default {
         },
     },
 
+    emits: ['ready', 'state-updated'],
+
     data: () => ({
         defaultFilters: null,
         defaultIntervals: null,
         defaultParams: null,
         state: null,
         keys: null,
+        ready: false,
     }),
 
     computed: {
@@ -59,6 +62,7 @@ export default {
     created() {
         this.init();
         this.load();
+        this.ready = true;
     },
 
     methods: {
@@ -91,7 +95,9 @@ export default {
             });
         },
         persist() {
-            localStorage.setItem(this.name, JSON.stringify(this.state));
+            if (this.ready) {
+                localStorage.setItem(this.name, JSON.stringify(this.state));
+            }
         },
         reset() {
             localStorage.removeItem(this.name);

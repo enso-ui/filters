@@ -1,10 +1,10 @@
 <script>
 import {
-    format, addDays, startOfDay, endOfDay, addWeeks, startOfWeek, endOfWeek,
-    addMonths, startOfMonth, endOfMonth, addYears, startOfYear, endOfYear,
+    compareAsc, format, addDays, startOfDay, endOfDay, addWeeks,
+    startOfWeek, endOfWeek, addMonths, startOfMonth, endOfMonth,
+    addYears, startOfYear, endOfYear, parse,
 } from 'date-fns';
 import { lcwords } from '@enso-ui/strings';
-import dateIntervals from './dateIntervals';
 import {
     Intervals, Base, Past, Future, Adjustments,
 } from './intervals';
@@ -12,34 +12,42 @@ import {
 export default {
     name: 'CoreDateFilter',
 
-    mixins: [dateIntervals],
+    inheritAttrs: false,
 
     props: {
-        default: {
-            type: String,
-            default: Intervals.today,
-            validator: v => Base.concat(Past)
-                .concat(Future).includes(v),
-        },
         direction: {
             type: Boolean,
             default: false,
         },
-        disabledOptions: {
+        excluded: {
             type: Array,
             default: () => ([]),
             validator: v => !v.some(val => !Base.concat(Past)
                 .concat(Future).includes(val)),
         },
+        filter: {
+            type: String,
+            required: true,
+            validator: v => Base.concat(Past)
+                .concat(Future).includes(v),
+        },
+        format: {
+            type: String,
+            default: 'Y-m-d H:i:s',
+        },
         future: {
             type: Boolean,
             default: false,
         },
-        value: {
+        interval: {
+            type: Object,
+            required: true,
+            validator: v => Object.keys(v).includes('min')
+                && Object.keys(v).includes('max'),
+        },
+        locale: {
             type: String,
-            default: null,
-            validator: v => Base.concat(Past)
-                .concat(Future).includes(v),
+            default: 'en',
         },
         weekStartsOn: {
             type: Number,
@@ -48,9 +56,10 @@ export default {
         },
     },
 
+    emits: ['update:filter', 'update:interval'],
+
     data: v => ({
-        filter: v.value || v.default,
-        isFuture: false,
+        isFuture: v.future,
     }),
 
     computed: {
@@ -60,6 +69,14 @@ export default {
         custom() {
             return this.filter === Intervals.custom;
         },
+        default() {
+            return Base.find(value => !this.excluded.includes(value));
+        },
+        equals() {
+            return !!this.interval.min
+                && !!this.interval.max
+                && compareAsc(this.parsedMin, this.parsedMax) === 0;
+        },
         filters() {
             return Object.keys(Intervals)
                 .filter(option => this.options.includes(Intervals[option]))
@@ -68,20 +85,27 @@ export default {
                     return filters;
                 }, {});
         },
+        internalFormat() {
+            return this.format.replace('d', 'dd')
+                .replace('m', 'MM')
+                .replace('Y', 'yyyy')
+                .replace('H', 'HH')
+                .replace('i', 'mm')
+                .replace('s', 'ss');
+        },
         options() {
             return Base.concat(this.isFuture ? Future : Past);
+        },
+        parsedMax() {
+            return parse(this.interval.max, this.internalFormat, new Date());
+        },
+        parsedMin() {
+            return parse(this.interval.min, this.internalFormat, new Date());
         },
     },
 
     watch: {
-        value(value) {
-            this.filter = value;
-            this.update();
-        },
-    },
-
-    beforeMount() {
-        this.isFuture = this.future;
+        filter: 'update',
     },
 
     created() {
@@ -89,20 +113,8 @@ export default {
     },
 
     methods: {
-        set(filter) {
-            this.filter = filter;
-            this.$emit('input', filter);
-            this.update();
-        },
-        update() {
-            this.adjust();
-            this.$emit('update', this.sanitizedInterval);
-        },
-        label(option) {
-            return lcwords(option);
-        },
-        adjust() {
-            switch (this.filter) {
+        update(filter = this.filter) {
+            switch (filter) {
             case Intervals.today:
             case Intervals.yesterday:
             case Intervals.tomorrow:
@@ -132,32 +144,46 @@ export default {
                 throw Error('Unknown Interval');
             }
         },
+        label(option) {
+            return lcwords(option);
+        },
         daily() {
             const min = startOfDay(addDays(new Date(), this.adjustment));
             const max = endOfDay(addDays(new Date(), this.adjustment));
 
-            this.interval.min = this.date(min);
-            this.interval.max = this.date(max);
+            const interval = { min: this.date(min), max: this.date(max) };
+
+            this.$emit('update:interval', interval);
         },
         weekly() {
             const options = { weekStartsOn: this.weekStartsOn };
             const min = startOfWeek(addWeeks(new Date(), this.adjustment), options);
             const max = endOfWeek(addWeeks(new Date(), this.adjustment), options);
 
-            this.interval.min = this.date(min);
-            this.interval.max = this.date(max);
+            const interval = { min: this.date(min), max: this.date(max) };
+
+            this.$emit('update:interval', interval);
         },
         monthly() {
-            this.interval.min = this.date(startOfMonth(addMonths(new Date(), this.adjustment)));
-            this.interval.max = this.date(endOfMonth(addMonths(new Date(), this.adjustment)));
+            const min = startOfMonth(addMonths(new Date(), this.adjustment));
+            const max = endOfMonth(addMonths(new Date(), this.adjustment));
+
+            const interval = { min: this.date(min), max: this.date(max) };
+
+            this.$emit('update:interval', interval);
         },
         yearly() {
-            this.interval.min = this.date(startOfYear(addYears(new Date(), this.adjustment)));
-            this.interval.max = this.date(endOfYear(addYears(new Date(), this.adjustment)));
+            const min = startOfYear(addYears(new Date(), this.adjustment));
+            const max = endOfYear(addYears(new Date(), this.adjustment));
+
+            const interval = { min: this.date(min), max: this.date(max) };
+
+            this.$emit('update:interval', interval);
         },
         all() {
-            this.interval.min = null;
-            this.interval.max = null;
+            const interval = { min: null, max: null };
+
+            this.$emit('update:interval', interval);
         },
         date(date) {
             return format(date, this.internalFormat);
@@ -165,33 +191,33 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             backEvents: {
-                click: () => this.set(this.default),
+                click: () => this.$emit('update:filter', this.default),
             },
             custom: this.custom,
             direction: this.direction,
             directionBindings: {
-                value: this.isFuture,
+                modelValue: this.isFuture,
             },
             directionEvents: {
-                input: (e) => {
+                'update:modelValue': e => {
                     this.isFuture = e;
-                    this.filter = 'today';
+                    this.$emit('update:filter', this.default);
                 },
             },
             filter: this.filter,
             filters: Object.keys(this.filters)
-                .filter(key => !this.disabledOptions.includes(key))
+                .filter(key => !this.excluded.includes(key))
                 .reduce((filters, key) => {
                     filters[key] = this.filters[key];
                     return filters;
                 }, {}),
-            filterEvents: type => ({
-                click: () => this.set(type),
+            filterEvents: filter => ({
+                click: () => this.$emit('update:filter', filter),
             }),
             minBindings: {
-                value: this.interval.min,
+                modelValue: this.interval.min,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
@@ -199,13 +225,13 @@ export default {
                 max: this.interval.max,
             },
             minEvents: {
-                input: (e) => {
-                    this.interval.min = e;
-                    this.update();
+                'update:modelValue': e => {
+                    const interval = { min: e, max: this.interval.max };
+                    this.$emit('update:interval', interval);
                 },
             },
             maxBindings: {
-                value: this.interval.max,
+                modelValue: this.interval.max,
                 format: this.format,
                 isWarning: this.equals,
                 locale: this.locale,
@@ -213,9 +239,9 @@ export default {
                 min: this.interval.min,
             },
             maxEvents: {
-                input: (e) => {
-                    this.interval.max = e;
-                    this.update();
+                'update:modelValue': e => {
+                    const interval = { min: this.interval.min, max: e };
+                    this.$emit('update:interval', interval);
                 },
             },
         });

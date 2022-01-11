@@ -1,17 +1,17 @@
 <template>
-    <core-interval-filter v-bind="$attrs"
-        v-on="$listeners">
-        <template v-slot:default="{
-                value, invalid, minBindings, minEvents, maxBindings,
-                maxEvents, minClearEvents, maxClearEvents,
-            }">
-            <div class="interval-filter is-paddingless">
-                <div v-if="!compact"
-                    class="header has-text-centered has-background-light">
-                    <b>{{ i18n(name) }}</b>
-                </div>
-                <div v-tooltip="compact ? i18n(name) : null"
-                    :class="['input-wrapper', {'has-background-light': compact}]">
+    <div class="interval-filter is-paddingless"
+        :class="$attrs.class">
+        <div v-if="!compact"
+            class="header has-text-centered has-background-light">
+            <b>{{ i18n(name) }}</b>
+        </div>
+        <div v-tooltip="compact ? i18n(name) : null"
+            :class="['input-wrapper', {'has-background-light': compact}]">
+            <core-interval-filter v-bind="$attrs">
+                <template #default="{
+                        modelValue, invalid, minBindings, minEvents, maxBindings,
+                        maxEvents, minClearEvents, maxClearEvents,
+                    }">
                     <div class="columns is-mobile">
                         <div class="column">
                             <div class="control has-icons-right">
@@ -20,7 +20,7 @@
                                     v-bind="minBindings"
                                     :placeholder="i18n(minLabel)"
                                     v-on="minEvents">
-                                <span v-if="value.min"
+                                <span v-if="modelValue.min"
                                     class="icon is-small is-right clear-button"
                                     v-on="minClearEvents">
                                     <a class="delete is-small"/>
@@ -34,7 +34,7 @@
                                     v-bind="maxBindings"
                                     :placeholder="i18n(maxLabel)"
                                     v-on="maxEvents">
-                                <span v-if="value.max"
+                                <span v-if="modelValue.max"
                                     class="icon is-small is-right clear-button"
                                     v-on="maxClearEvents">
                                     <a class="delete is-small"/>
@@ -42,13 +42,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </template>
-    </core-interval-filter>
+                </template>
+            </core-interval-filter>
+        </div>
+    </div>
 </template>
 
 <script>
+import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import CoreIntervalFilter from '../renderless/CoreIntervalFilter.vue';
 
@@ -58,6 +59,8 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: { CoreIntervalFilter },
+
+    inheritAttrs: false,
 
     props: {
         compact: {
