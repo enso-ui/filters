@@ -22,7 +22,6 @@
                                     class="icon is-small is-right clear-button"
                                     v-on="clearEvents">
                                     <a class="delete is-small"/>
-                                    <a class="delete is-small"/>
                                 </span>
                             </div>
                         </template>
