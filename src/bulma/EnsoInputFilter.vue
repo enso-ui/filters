@@ -1,6 +1,5 @@
 <template>
-    <input-filter
-        :i18n="i18n"/>
+    <input-filter :i18n="i18n"/>
 </template>
 
 <script>

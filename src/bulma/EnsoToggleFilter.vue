@@ -1,6 +1,5 @@
 <template>
-    <toggle-filter
-        :i18n="i18n"/>
+    <toggle-filter :i18n="i18n"/>
 </template>
 
 <script>

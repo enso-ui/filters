@@ -1,6 +1,5 @@
 <template>
-    <interval-filter
-        :i18n="i18n"/>
+    <interval-filter :i18n="i18n"/>
 </template>
 
 <script>

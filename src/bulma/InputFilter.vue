@@ -11,14 +11,14 @@
                 <div class="column">
                     <core-input-filter v-bind="$attrs">
                         <template #default="{
-                                value, bindings, events, clearEvents,
+                                modelValue, bindings, events, clearEvents,
                             }">
                             <div class="control has-icons-right">
                                 <input class="input control"
                                     v-bind="bindings"
                                     :placeholder="i18n(label)"
                                     v-on="events">
-                                <span v-if="value"
+                                <span v-if="modelValue"
                                     class="icon is-small is-right clear-button"
                                     v-on="clearEvents">
                                     <a class="delete is-small"/>

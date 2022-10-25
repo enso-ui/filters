@@ -1,6 +1,5 @@
 <template>
-    <vue-filter
-        :i18n="i18n"/>
+    <vue-filter :i18n="i18n"/>
 </template>
 
 <script>
