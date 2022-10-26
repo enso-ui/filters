@@ -6,12 +6,24 @@ export default {
 
     props: {
         modelValue: {
-            type: String,
-            default: 'text',
+            type: [Number, String],
+            required: true,
         },
         type: {
             type: String,
             default: 'text',
+        },
+        min: {
+            type: Number,
+            default: null,
+        },
+        max: {
+            type: Number,
+            default: null,
+        },
+        step: {
+            type: Number,
+            default: null,
         },
     },
 
@@ -21,18 +33,17 @@ export default {
         return this.$slots.default({
             modelValue: this.modelValue,
             bindings: {
-                modelValue: this.modelValue,
+                value: this.modelValue,
                 type: this.type,
+                min: this.min,
+                max: this.max,
+                step: this.step,
             },
             events: {
-                input: e => {
-                    this.$emit('update:modelValue', e.target.value);
-                },
+                input: e => this.$emit('update:modelValue', e.target.value),
             },
             clearEvents: {
-                click: () => {
-                    this.$emit('update:modelValue', null);
-                },
+                click: () => this.$emit('update:modelValue', null),
             },
         });
     },
