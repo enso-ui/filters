@@ -6,7 +6,7 @@ export default {
 
     props: {
         modelValue: {
-            type: [Number, String],
+            type: [Number, String, null],
             required: true,
         },
         type: {
