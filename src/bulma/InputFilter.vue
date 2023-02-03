@@ -1,5 +1,5 @@
 <template>
-    <div class="interval-filter is-paddingless"
+    <div class="input-filter is-paddingless"
         :class="$attrs.class">
         <div v-if="!compact"
             class="header has-text-centered has-background-light">
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .interval-filter {
+    .input-filter {
         .header {
             border-top-left-radius: inherit;
             border-top-right-radius: inherit;
