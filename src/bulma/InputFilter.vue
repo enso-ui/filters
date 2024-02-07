@@ -2,7 +2,7 @@
     <div class="input-filter is-paddingless"
         :class="$attrs.class">
         <div v-if="!compact"
-            class="header has-text-centered has-background-light">
+            class="header has-text-centered has-background-light px-2">
             <b>{{ i18n(name) }}</b>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"

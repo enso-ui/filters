@@ -6,7 +6,7 @@
                     filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
                     direction, directionBindings, directionEvents, backEvents, filterEvents,
                 }">
-                <div class="header has-text-centered has-background-light"
+                <div class="header has-text-centered has-background-light px-2"
                     v-if="!compact">
                     <strong>
                         {{ label(custom) }}

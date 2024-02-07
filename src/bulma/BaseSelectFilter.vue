@@ -1,7 +1,7 @@
 <template>
     <div class="vue-filter is-paddingless">
         <div v-if="!compact"
-            class="header has-text-centered has-background-light">
+            class="header has-text-centered has-background-light px-2">
             <b>{{ i18n(name) }}</b>
         </div>
         <slot/>
