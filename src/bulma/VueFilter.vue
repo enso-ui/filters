@@ -1,6 +1,6 @@
 <template>
     <div class="vue-filter is-paddingless">
-        <div v-if="!compact"
+        <div v-if="!compact && name"
             class="header has-text-centered has-background-light px-2">
             <strong>{{ i18n(name) }}</strong>
             <span v-if="readonly"
