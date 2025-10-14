@@ -7,27 +7,23 @@
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
             :class="['input-wrapper', {'has-background-light': compact}]">
-            <div class="columns is-mobile">
-                <div class="column">
-                    <core-input-filter v-bind="$attrs">
-                        <template #default="{
-                                modelValue, bindings, events, clearEvents,
-                            }">
-                            <div class="control has-icons-right">
-                                <input class="input control"
-                                    v-bind="bindings"
-                                    :placeholder="i18n(label)"
-                                    v-on="events">
-                                <span v-if="modelValue"
-                                    class="icon is-small is-right clear-button"
-                                    v-on="clearEvents">
-                                    <a class="delete is-small"/>
-                                </span>
-                            </div>
-                        </template>
-                    </core-input-filter>
-                </div>
-            </div>
+            <core-input-filter v-bind="$attrs">
+                <template #default="{
+                        modelValue, bindings, events, clearEvents,
+                    }">
+                    <div class="control has-icons-right">
+                        <input class="input control"
+                            v-bind="bindings"
+                            :placeholder="i18n(label)"
+                            v-on="events">
+                        <span v-if="modelValue"
+                            class="icon is-small is-right clear-button"
+                            v-on="clearEvents">
+                            <a class="delete is-small"/>
+                        </span>
+                    </div>
+                </template>
+            </core-input-filter>
         </div>
     </div>
 </template>
