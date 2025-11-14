@@ -2,14 +2,10 @@
     <vue-filter :i18n="i18n"/>
 </template>
 
-<script>
+<script setup>
+import { inject } from 'vue';
 import VueFilter from './VueFilter.vue';
 
-export default {
-    name: 'EnsoFilter',
+const i18n = inject('i18n');
 
-    components: { VueFilter },
-
-    inject: ['i18n'],
-};
 </script>

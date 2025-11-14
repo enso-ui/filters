@@ -16,7 +16,7 @@
                 <ul>
                     <li v-for="(option, index) in options"
                         :key="index"
-                        :class="{ 'is-active': option.value === modelValue }">
+                        :class="cssClass(option)">
                         <a @click="update(option.value)">
                             <span v-if="icons"
                                 :class="['icon', option.class]">
@@ -30,10 +30,10 @@
                         </a>
                     </li>
                     <li v-if="!hideOff"
-                        :class="{ 'is-active': modelValue === null }">
+                        :class="{ 'is-active': emptyModel }">
                         <a @click="update()">
                             <span class="icon"
-                                :class="modelValue === null
+                                :class="emptyModel
                                     ? 'has-text-danger'
                                     : 'has-text-success'">
                                 <fa icon="power-off"/>
@@ -50,8 +50,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import 'v-tooltip/dist/v-tooltip.css';
+import {
+    computed, defineProps, defineModel, defineOptions,
+} from 'vue';
 import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -59,63 +62,94 @@ import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faPowerOff, faLock);
 
-export default {
-    name: 'VueFilter',
+defineOptions({
+    directives: {
+        tooltip: VTooltip,
+    },
+});
 
-    directives: { tooltip: VTooltip },
+const model = defineModel({
+    required: true,
+    type: null,
+});
 
-    components: { Fa },
-
-    props: {
-        compact: {
-            type: Boolean,
-            default: false,
-        },
-        hideOff: {
-            type: Boolean,
-            default: false,
-        },
-        i18n: {
-            type: Function,
-            default: v => v,
-        },
-        icons: {
-            type: Boolean,
-            default: false,
-        },
-        offLabel: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Array,
-            default() {
-                return [];
-            },
-        },
-        readonly: {
-            type: Boolean,
-            default: false,
-        },
-        name: {
-            type: String,
-            default: null,
-        },
-        modelValue: {
-            type: null,
-            default: null,
+const props = defineProps({
+    compact: {
+        type: Boolean,
+        default: false,
+    },
+    hideOff: {
+        type: Boolean,
+        default: false,
+    },
+    i18n: {
+        type: Function,
+        default: v => v,
+    },
+    icons: {
+        type: Boolean,
+        default: false,
+    },
+    offLabel: {
+        type: String,
+        default: '',
+    },
+    options: {
+        type: Array,
+        default() {
+            return [];
         },
     },
-
-    emits: ['update:modelValue'],
-
-    methods: {
-        update(value = null) {
-            if (!this.readonly) {
-                this.$emit('update:modelValue', value);
-            }
-        },
+    readonly: {
+        type: Boolean,
+        default: false,
     },
+    name: {
+        type: String,
+        default: null,
+    },
+    multiple: {
+        type: Boolean,
+        default: false,
+    },
+});
+
+const cssClass = option => ({
+    'is-active': props.multiple
+        ? model.value.includes(option.value)
+        : option.value === model,
+});
+
+const emptyModel = computed(() => (props.multiple
+    ? model.value.length < 1
+    : model.value === null));
+
+const update = (value = null) => {
+    if (props.readonly) {
+        return;
+    }
+
+    if (!props.multiple) {
+        model.value = value;
+        return;
+    }
+
+    if (value === null) {
+        model.value = [];
+        return;
+    }
+
+    const current = Array.isArray(model.value) ? [...model.value] : [];
+
+    const index = current.indexOf(value);
+
+    if (index === -1) {
+        current.push(value);
+    } else {
+        current.splice(index, 1);
+    }
+
+    model.value = current;
 };
 </script>
 
