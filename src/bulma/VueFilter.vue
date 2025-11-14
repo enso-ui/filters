@@ -117,7 +117,7 @@ const props = defineProps({
 const cssClass = option => ({
     'is-active': props.multiple
         ? model.value.includes(option.value)
-        : option.value === model,
+        : option.value === model.value,
 });
 
 const emptyModel = computed(() => (props.multiple
