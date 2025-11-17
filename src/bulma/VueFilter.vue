@@ -12,7 +12,7 @@
         <div v-tooltip="compact ? i18n(name) : null"
             class="tabs-wrapper"
             :class="{ 'has-background-light': compact }">
-            <div class="tabs is-toggle is-fullwidth filter-tabs">
+            <div class="tabs is-toggle is-fullwidth filter-tabs no-scrollbars">
                 <ul>
                     <li v-for="(option, index) in options"
                         :key="index"
