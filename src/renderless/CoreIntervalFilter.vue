@@ -8,8 +8,8 @@ export default {
         modelValue: {
             type: Object,
             default: () => ({
-                min: null,
-                max: null,
+                min: '',
+                max: '',
             }),
             validator: v => Object.keys(v).includes('min')
                 && Object.keys(v).includes('max'),
@@ -65,13 +65,13 @@ export default {
             },
             minClearEvents: {
                 click: () => {
-                    this.modelValue.min = null;
+                    this.modelValue.min = '';
                     this.update();
                 },
             },
             maxClearEvents: {
                 click: () => {
-                    this.modelValue.max = null;
+                    this.modelValue.max = '';
                     this.update();
                 },
             },
