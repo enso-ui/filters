@@ -4,7 +4,6 @@
         :i18n="i18n"
         :name="name">
         <enso-select v-bind="{...$attrs, class: 'select-wrapper'}"
-            :class="{'has-background-light': compact}"
             v-tooltip="compact ? i18n(name) : null"
             ref="select"/>
     </base-select-filter>

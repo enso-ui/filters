@@ -1,7 +1,7 @@
 <template>
-    <div class="vue-filter is-paddingless">
+    <div class="vue-filter p-0">
         <div v-if="!compact"
-            class="header has-text-centered has-background-light px-2">
+            class="header filter-header has-text-centered px-2">
             <b>{{ i18n(name) }}</b>
         </div>
         <slot/>
@@ -34,17 +34,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-    .vue-filter {
-        .header {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-            padding-top: 0.5em;
-        }
-
-        .select-wrapper {
-            padding: 0.25em;
-        }
-    }
-</style>

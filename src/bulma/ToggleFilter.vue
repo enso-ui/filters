@@ -1,17 +1,17 @@
 <template>
-    <div class="vue-filter is-paddingless">
+    <div class="vue-filter p-0">
         <div v-if="!compact"
-            class="header has-text-centered has-background-light px-2">
+            class="header filter-header has-text-centered px-2">
             <strong>{{ i18n(name) }}</strong>
             <span v-if="readonly"
                 class="icon lock has-text-muted">
-                <fa icon="lock"
+                <fa :icon="faLock"
                     size="xs"/>
             </span>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
             class="tabs-wrapper"
-            :class="{ 'has-background-light': compact }">
+            :class="{ 'filter-surface': compact }">
             <div class="tabs is-toggle is-fullwidth filter-tabs">
                 <ul>
                     <li :class="{ 'is-active': modelValue }">
@@ -36,6 +36,7 @@
 import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 export default {
     name: 'ToggleFilter',
@@ -70,12 +71,16 @@ export default {
             default: null,
         },
         modelValue: {
-            type: Boolean,
+            type: [Boolean, null],
             required: true,
         },
     },
 
     emits: ['change', 'update:modelValue'],
+
+    data: () => ({
+        faLock,
+    }),
 
     methods: {
         update() {
@@ -86,28 +91,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss">
-    .vue-filter {
-        .header {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-            padding-top: 0.5em;
-        }
-
-        .tabs-wrapper {
-            border-radius: inherit;
-            padding: 0.25em;
-
-            .tabs {
-                height: 2.25em;
-
-                li {
-                    a {
-                        padding: 0.25em;
-                    }
-                }
-            }
-        }
-    }
-</style>

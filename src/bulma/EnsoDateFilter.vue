@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { useStore } from '../utils/pinia';
 import DateFilter from './DateFilter.vue';
 
 export default {
@@ -24,8 +24,12 @@ export default {
     },
 
     computed: {
-        ...mapState(['meta']),
-        ...mapGetters('preferences', ['lang']),
+        meta() {
+            return useStore('app').meta;
+        },
+        lang() {
+            return useStore('preferences').lang;
+        },
     },
 };
 </script>
