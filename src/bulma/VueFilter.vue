@@ -52,15 +52,10 @@
 
 <script setup>
 import 'v-tooltip/dist/v-tooltip.css';
-import {
-    computed
-} from 'vue';
+import { computed } from 'vue';
 import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
-import {
-    defineModel, defineOptions, defineProps,
-} from 'vue';
 
 defineOptions({
     directives: {
