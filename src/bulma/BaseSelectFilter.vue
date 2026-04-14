@@ -34,3 +34,5 @@ export default {
 };
 
 </script>
+
+<style lang="scss" src="./styles/vue-filter.scss"></style>

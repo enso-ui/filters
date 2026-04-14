@@ -147,3 +147,5 @@ const update = (value = null) => {
     model.value = current;
 };
 </script>
+
+<style lang="scss" src="./styles/vue-filter.scss"></style>
