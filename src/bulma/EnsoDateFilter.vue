@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import { useStore } from '../utils/pinia';
+import { app as useApp } from '@enso-ui/ui/src/pinia/app';
+import { preferences as usePreferences } from '@enso-ui/ui/src/pinia/preferences';
 import DateFilter from './DateFilter.vue';
 
 export default {
@@ -25,10 +26,10 @@ export default {
 
     computed: {
         meta() {
-            return useStore('app').meta;
+            return useApp().meta;
         },
         lang() {
-            return useStore('preferences').lang;
+            return usePreferences().lang;
         },
     },
 };
