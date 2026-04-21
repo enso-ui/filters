@@ -1,7 +1,7 @@
 {
   "name": "@enso-ui/filters",
   "version": "3.3.6",
-  "description": "Renderless Vue Filter Components",
+  "description": "Renderless filter primitives and Bulma filter components for Enso UI",
   "main": "bulma/index.js",
   "repository": {
     "type": "git",
