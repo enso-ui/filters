@@ -33,15 +33,9 @@
         pointer-events: all;
     }
 
-    .select-wrapper {
-        --enso-select-trigger-radius: var(--bulma-radius);
-        --enso-select-dropdown-radius: var(--bulma-radius);
-    }
-
     .vue-select {
         --enso-select-trigger-surface: var(--enso-filter-control-surface);
         --enso-select-trigger-border: var(--enso-surface-border);
-        --enso-select-trigger-color: var(--bulma-text-strong);
     }
 }
 

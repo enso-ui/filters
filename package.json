@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/filters",
-  "version": "3.3.6",
+  "version": "3.3.7",
   "description": "Renderless filter primitives and Bulma filter components for Enso UI",
   "main": "bulma/index.js",
   "repository": {
