@@ -13,8 +13,7 @@
                     </strong>
                 </div>
                 <div v-tooltip="compact ? label(custom) : null"
-                    class="filter-wrapper"
-                    :class="{ 'filter-surface': compact }">
+                    class="filter-wrapper">
                     <fade mode="out-in">
                         <div class="tags-wrapper has-text-centered"
                             key="tags"
@@ -26,13 +25,15 @@
                                         class="is-small direction"
                                         v-on="directionEvents"/>
                                 </span>
-                                <span class="tag"
-                                    :class="{ 'is-warning': filter === key }"
-                                    v-for="(type, key) in filters"
-                                    :key="key"
-                                    v-on="filterEvents(key)">
-                                    {{ i18n(type) }}
-                                </span>
+                                <div class="presets-wrapper">
+                                    <span class="tag"
+                                        :class="{ 'is-warning': filter === key }"
+                                        v-for="(type, key) in filters"
+                                        :key="key"
+                                        v-on="filterEvents(key)">
+                                        {{ i18n(type) }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div v-else
@@ -40,7 +41,7 @@
                             class="dates-wrapper animate__animated">
                             <div class="columns is-mobile is-variable is-0 is-centered">
                                 <div class="column is-narrow">
-                                    <a class="button is-naked p-2">
+                                    <a class="button is-naked px-3">
                                         <span class="icon is-small"
                                             v-on="backEvents">
                                             <fa :icon="faArrowLeft"
@@ -127,3 +128,4 @@ export default {
 </script>
 
 <style lang="scss" src="./styles/vue-filter.scss"></style>
+<style lang="scss" src="./styles/date-filter.scss"></style>

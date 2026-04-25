@@ -1,0 +1,73 @@
+.enso-filter,
+.boolean-filter {
+    .filter-wrapper .tabs {
+        min-height: var(--bulma-control-height);
+        height: var(--bulma-control-height);
+        border-radius: var(--bulma-radius);
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        li {
+            padding: 0.2rem;
+
+            a {
+                min-height: calc(var(--bulma-control-height) - 0.4rem);
+                height: calc(var(--bulma-control-height) - 0.4rem);
+                padding: 0 0.25rem;
+                font-size: var(--bulma-body-font-size);
+                font-weight: var(--bulma-body-weight);
+                line-height: normal;
+                letter-spacing: 0;
+                border: none;
+                border-radius: var(--bulma-radius);
+                opacity: 0.5;
+                transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            }
+
+            a:hover {
+                background-color: transparent;
+                color: var(--bulma-text-strong);
+            }
+
+            &.is-active a {
+                background-color: var(--enso-filter-active-surface);
+                border-color: transparent;
+                box-shadow:
+                    0 1px 2px color-mix(in srgb, var(--bulma-text) 6%, transparent),
+                    0 8px 20px color-mix(in srgb, var(--bulma-text) 10%, transparent);
+                color: var(--bulma-text-strong);
+                font-weight: 600;
+                opacity: 1;
+            }
+        }
+
+        ul,
+        li:first-child a {
+            border-top-left-radius: var(--bulma-radius);
+            border-bottom-left-radius: var(--bulma-radius);
+        }
+
+        li:last-child a {
+            border-top-right-radius: var(--bulma-radius);
+            border-bottom-right-radius: var(--bulma-radius);
+        }
+
+        .filter-label {
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+        }
+    }
+
+    .tabs.is-toggle li a {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--bulma-text);
+        box-shadow: none;
+    }
+}

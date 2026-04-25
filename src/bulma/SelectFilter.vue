@@ -2,11 +2,15 @@
     <base-select-filter :class="$attrs.class"
         :compact="compact"
         :i18n="i18n"
+        :readonly="readonly"
         :name="name">
-        <vue-select v-bind="{...$attrs, class: 'select-wrapper'}"
-            :i18n="i18n"
-            v-tooltip="compact ? i18n(name) : null"
-            ref="select"/>
+        <template #default="{ readonly }">
+            <vue-select v-bind="{...$attrs, class: 'filter-wrapper'}"
+                :i18n="i18n"
+                :readonly
+                v-tooltip="compact ? i18n(name) : null"
+                ref="select"/>
+        </template>
     </base-select-filter>
 </template>
 
@@ -37,6 +41,10 @@ export default {
         name: {
             type: String,
             default: null,
+        },
+        readonly: {
+            type: Boolean,
+            default: false,
         },
     },
 

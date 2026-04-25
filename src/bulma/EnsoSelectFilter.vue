@@ -2,9 +2,11 @@
     <base-select-filter :class="$attrs.class"
         :compact="compact"
         :i18n="i18n"
+        :readonly="readonly"
         :name="name">
-        <enso-select v-bind="{...$attrs, class: 'select-wrapper'}"
+        <enso-select v-bind="{...$attrs, class: 'filter-wrapper'}"
             v-tooltip="compact ? i18n(name) : null"
+            :readonly="readonly"
             ref="select"/>
     </base-select-filter>
 </template>
@@ -34,6 +36,10 @@ export default {
         name: {
             type: String,
             default: null,
+        },
+        readonly: {
+            type: Boolean,
+            default: false,
         },
     },
 

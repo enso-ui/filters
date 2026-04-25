@@ -1,5 +1,6 @@
 <template>
-    <vue-filter icons
+    <vue-filter class="boolean-filter"
+        icons
         :options="options"/>
 </template>
 
@@ -32,3 +33,5 @@ export default {
     }),
 };
 </script>
+
+<style lang="scss" src="./styles/filter-tabs.scss"></style>

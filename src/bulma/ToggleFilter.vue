@@ -1,17 +1,17 @@
 <template>
-    <div class="vue-filter p-0">
-        <div v-if="!compact"
-            class="header filter-header has-text-centered px-2">
-            <strong>{{ i18n(name) }}</strong>
-            <span v-if="readonly"
-                class="icon lock has-text-muted">
-                <fa :icon="faLock"
-                    size="xs"/>
+    <div class="vue-filter toggle-filter p-0">
+        <div v-if="!compact && name"
+            class="header has-text-centered px-2">
+            <span class="label">{{ i18n(name) }}
+                <span v-if="readonly"
+                    class="icon is-small">
+                    <fa :icon="faLock"
+                        size="xs"/>
+                </span>
             </span>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
-            class="tabs-wrapper"
-            :class="{ 'filter-surface': compact }">
+            class="filter-wrapper">
             <div class="tabs is-toggle is-fullwidth filter-tabs">
                 <ul>
                     <li :class="{ 'is-active': modelValue }">
@@ -93,3 +93,4 @@ export default {
 </script>
 
 <style lang="scss" src="./styles/vue-filter.scss"></style>
+<style lang="scss" src="./styles/toggle-filter.scss"></style>

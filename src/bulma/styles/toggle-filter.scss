@@ -1,0 +1,41 @@
+.toggle-filter {
+    .filter-wrapper .tabs {
+        min-height: var(--bulma-control-height);
+        height: var(--bulma-control-height);
+        border-radius: var(--bulma-radius);
+
+        li {
+            padding: 0.2rem;
+
+            a {
+                min-height: calc(var(--bulma-control-height) - 0.4rem);
+                height: calc(var(--bulma-control-height) - 0.4rem);
+                padding: 0 0.8rem;
+                font-size: var(--bulma-body-font-size);
+                font-weight: var(--bulma-body-weight);
+                line-height: normal;
+                letter-spacing: 0;
+                border: none;
+                border-radius: var(--bulma-radius);
+                color: var(--bulma-text);
+                opacity: 0.5;
+                transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            }
+
+            a:hover {
+                background-color: transparent;
+                color: var(--bulma-text-strong);
+            }
+
+            &.is-active a {
+                background-color: var(--enso-filter-active-surface);
+                border-color: transparent;
+                box-shadow:
+                    0 1px 2px color-mix(in srgb, var(--bulma-text) 6%, transparent),
+                    0 8px 20px color-mix(in srgb, var(--bulma-text) 10%, transparent);
+                color: var(--bulma-text-strong);
+                opacity: 1;
+            }
+        }
+    }
+}

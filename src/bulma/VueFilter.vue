@@ -1,17 +1,17 @@
 <template>
     <div class="vue-filter p-0">
         <div v-if="!compact && name"
-            class="header filter-header has-text-centered px-2">
-            <strong>{{ i18n(name) }}</strong>
-            <span v-if="readonly"
-                class="icon lock has-text-muted">
-                <fa :icon="faLock"
-                    size="xs"/>
+            class="header has-text-centered px-2">
+            <span class="label">{{ i18n(name) }}
+                <span v-if="readonly"
+                    class="icon is-small">
+                    <fa :icon="faLock"
+                        size="xs"/>
+                </span>
             </span>
         </div>
-        <div v-tooltip="compact ? i18n(name) : null"
-            class="tabs-wrapper"
-            :class="{ 'filter-surface': compact }">
+        <div v-tooltip="!compact ? i18n(name) : null"
+            class="filter-wrapper">
             <div class="tabs is-toggle is-fullwidth filter-tabs no-scrollbars">
                 <ul>
                     <li v-for="(option, index) in options"
@@ -19,7 +19,7 @@
                         :class="cssClass(option)">
                         <a @click="update(option.value)">
                             <span v-if="icons"
-                                :class="['icon', option.class]">
+                                :class="['icon is-small', option.class]">
                                 <fa :icon="option.icon"/>
                             </span>
                             <span v-else
@@ -30,11 +30,11 @@
                         </a>
                     </li>
                     <li v-if="!hideOff"
-                        :class="{ 'is-active': emptyModel }">
+                        :class="{ 'is-active': empty }">
                         <a @click="update()">
-                            <span class="icon"
-                                :class="emptyModel
-                                    ? 'has-text-danger'
+                            <span class="icon is-small"
+                                :class="empty
+                                    ? 'has-text-dark'
                                     : 'has-text-success'">
                                 <fa :icon="faPowerOff"/>
                             </span>
@@ -115,7 +115,7 @@ const cssClass = option => ({
         : option.value === model.value,
 });
 
-const emptyModel = computed(() => (props.multiple
+const empty = computed(() => (props.multiple
     ? model.value.length < 1
     : model.value === null));
 

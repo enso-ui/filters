@@ -6,7 +6,7 @@
             <b>{{ i18n(name) }}</b>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
-            :class="['input-wrapper', { 'filter-surface': compact }]">
+            class="filter-wrapper">
             <core-input-filter v-bind="$attrs">
                 <template #default="{
                         modelValue, bindings, events, clearEvents,

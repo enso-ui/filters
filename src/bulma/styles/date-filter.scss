@@ -1,0 +1,104 @@
+.date-filter {
+    .tag {
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .tags-wrapper .filter-tags {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.125rem;
+        min-height: var(--bulma-control-height);
+        height: var(--bulma-control-height);
+        padding: 0 0.2rem;
+        border-radius: var(--bulma-radius);
+
+        .direction-wrapper {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            min-height: var(--bulma-control-height);
+            height: var(--bulma-control-height);
+        }
+
+        .presets-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-width: 0;
+            gap: 0.125rem;
+            flex-wrap: wrap;
+        }
+
+        .direction {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .filter-wrapper {
+        .flatpickr-input,
+        .input,
+        .control .input {
+            border-radius: var(--bulma-radius);
+        }
+    }
+
+    .filter-tags .tag {
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: var(--bulma-radius);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(var(--bulma-control-height) - 0.4rem);
+        height: calc(var(--bulma-control-height) - 0.4rem);
+        padding: 0 0.65rem;
+        color: var(--bulma-text);
+        font-weight: var(--bulma-body-weight);
+        box-shadow: none;
+        opacity: 0.5;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    }
+
+    .filter-tags .tag:hover {
+        background-color: transparent;
+        color: var(--bulma-text-strong);
+    }
+
+    .filter-tags .tag.is-warning {
+        background-color: var(--enso-filter-active-surface);
+        border-color: transparent;
+        box-shadow:
+            0 1px 2px color-mix(in srgb, var(--bulma-text) 6%, transparent),
+            0 8px 20px color-mix(in srgb, var(--bulma-text) 10%, transparent);
+        color: var(--bulma-text-strong);
+        font-weight: var(--bulma-body-weight);
+        opacity: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+        .tags-wrapper .filter-tags {
+            justify-content: flex-start;
+        }
+
+        .tags-wrapper .filter-tags .presets-wrapper {
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .filter-tags .tag {
+            flex: 0 0 auto;
+        }
+    }
+}
