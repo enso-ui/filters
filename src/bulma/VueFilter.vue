@@ -10,7 +10,7 @@
                 </span>
             </span>
         </div>
-        <div v-tooltip="!compact ? i18n(name) : null"
+        <div v-tooltip="compact ? i18n(name) : null"
             class="filter-wrapper">
             <div class="tabs is-toggle is-fullwidth filter-tabs no-scrollbars">
                 <ul>
