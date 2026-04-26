@@ -27,7 +27,7 @@
                                 </span>
                                 <div class="presets-wrapper">
                                     <span class="tag"
-                                        :class="{ 'is-warning': filter === key }"
+                                        :class="{ 'is-active': filter === key }"
                                         v-for="(type, key) in filters"
                                         :key="key"
                                         v-on="filterEvents(key)">

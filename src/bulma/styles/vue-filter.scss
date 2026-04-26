@@ -1,8 +1,8 @@
 :is(.vue-filter, .input-filter, .interval-filter, .date-filter) {
-    background-color: var(--enso-surface);
+    background-color: var(--enso-page-background);
 
     :is(.header, .filter-header, .filter-surface) {
-        background-color: var(--enso-surface);
+        background-color: var(--enso-page-background);
         color: var(--bulma-text-strong);
     }
 
@@ -14,27 +14,27 @@
     }
 
     .filter-wrapper {
-        background-color: var(--enso-filter-control-surface);
+        background-color: var(--enso-page-background);
         border-radius: inherit;
         padding: 0.25em;
     }
 
     :is(.tabs, .filter-tags) {
-        background-color: var(--enso-filter-control-surface);
+        background-color: var(--enso-page-background);
         box-shadow: none;
     }
 
     :is(.input, .textarea, .flatpickr-input.input),
     .select select {
-        background-color: var(--enso-filter-control-surface);
+        background-color: var(--enso-page-background);
     }
 
     .control.has-icons-right .icon.clear-button {
         pointer-events: all;
     }
 
-    .vue-select {
-        --enso-select-trigger-surface: var(--enso-filter-control-surface);
+    .vue-dropdown {
+        --enso-select-trigger-surface: var(--enso-page-background);
     }
 }
 
