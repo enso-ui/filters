@@ -23,9 +23,16 @@
     .filter-wrapper > .vue-select {
         --enso-select-trigger-surface: var(--enso-page-background);
         --enso-select-trigger-border: transparent;
+        box-shadow: none;
+
+        .dropdown,
+        .dropdown-trigger {
+            box-shadow: none;
+        }
 
         .dropdown .dropdown-trigger .button.input {
             border-color: transparent;
+            box-shadow: none;
             --enso-control-hover-border-color: transparent;
         }
     }
