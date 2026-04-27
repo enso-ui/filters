@@ -4,23 +4,19 @@
         :i18n="i18n"
         :readonly="readonly"
         :name="name">
-        <enso-select v-bind="{...$attrs, class: 'filter-wrapper'}"
-            v-tooltip="compact ? i18n(name) : null"
+        <enso-select class="p-0"
+            v-bind="$attrs"
             :readonly="readonly"
             ref="select"/>
     </base-select-filter>
 </template>
 
 <script>
-import 'v-tooltip/dist/v-tooltip.css';
-import { VTooltip } from 'v-tooltip';
 import { EnsoSelect } from '@enso-ui/select/bulma';
 import BaseSelectFilter from './BaseSelectFilter.vue';
 
 export default {
     name: 'EnsoSelectFilter',
-
-    directives: { tooltip: VTooltip },
 
     components: { BaseSelectFilter, EnsoSelect },
 

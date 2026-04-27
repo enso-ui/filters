@@ -1,7 +1,7 @@
 <template>
     <div class="vue-filter toggle-filter p-0">
         <div v-if="!compact && name"
-            class="header has-text-centered px-2">
+            class="filter-header has-text-centered px-2">
             <span class="label">{{ i18n(name) }}
                 <span v-if="readonly"
                     class="icon is-small">
@@ -92,5 +92,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./styles/vue-filter.scss"></style>
 <style lang="scss" src="./styles/toggle-filter.scss"></style>

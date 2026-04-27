@@ -10,5 +10,3 @@ import VueFilter from './VueFilter.vue';
 const i18n = inject('i18n');
 
 </script>
-
-<style lang="scss" src="./styles/filter-tabs.scss"></style>

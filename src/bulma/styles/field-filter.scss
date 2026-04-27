@@ -1,0 +1,32 @@
+@import './filter-shell';
+
+:is(.input-filter, .interval-filter, .select-filter) {
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
+    }
+
+    :is(.input, .textarea, .flatpickr-input.input),
+    .select select {
+        background-color: var(--enso-page-background);
+        border-color: transparent;
+    }
+}
+
+.input-filter,
+.interval-filter {
+    .filter-wrapper .input.control {
+        border-radius: var(--bulma-radius);
+    }
+}
+
+.select-filter {
+    .filter-wrapper > .vue-select {
+        --enso-select-trigger-surface: var(--enso-page-background);
+        --enso-select-trigger-border: transparent;
+
+        .dropdown .dropdown-trigger .button.input {
+            border-color: transparent;
+            --enso-control-hover-border-color: transparent;
+        }
+    }
+}

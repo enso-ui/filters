@@ -33,5 +33,3 @@ export default {
     }),
 };
 </script>
-
-<style lang="scss" src="./styles/filter-tabs.scss"></style>

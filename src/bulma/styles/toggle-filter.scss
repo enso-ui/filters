@@ -1,8 +1,11 @@
+@import './filter-shell';
+
 .toggle-filter {
     .filter-wrapper .tabs {
         min-height: var(--bulma-control-height);
         height: var(--bulma-control-height);
         border-radius: var(--bulma-radius);
+        background-color: var(--enso-page-background);
 
         li {
             padding: 0.2rem;

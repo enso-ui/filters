@@ -5,25 +5,20 @@
         :readonly="readonly"
         :name="name">
         <template #default="{ readonly }">
-            <vue-select v-bind="{...$attrs, class: 'filter-wrapper'}"
+            <vue-select v-bind="$attrs"
                 :i18n="i18n"
                 :readonly
-                v-tooltip="compact ? i18n(name) : null"
                 ref="select"/>
         </template>
     </base-select-filter>
 </template>
 
 <script>
-import 'v-tooltip/dist/v-tooltip.css';
-import { VTooltip } from 'v-tooltip';
 import { VueSelect } from '@enso-ui/select/bulma';
 import BaseSelectFilter from './BaseSelectFilter.vue';
 
 export default {
     name: 'SelectFilter',
-
-    directives: { tooltip: VTooltip },
 
     components: { BaseSelectFilter, VueSelect },
 

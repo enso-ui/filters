@@ -1,9 +1,12 @@
+@import './filter-shell';
+
 .enso-filter,
 .boolean-filter {
     .filter-wrapper .tabs {
         min-height: var(--bulma-control-height);
         height: var(--bulma-control-height);
         border-radius: var(--bulma-radius);
+        background-color: var(--enso-page-background);
         -ms-overflow-style: none;
         overflow: -moz-scrollbars-none;
 
@@ -34,7 +37,7 @@
             }
 
             &.is-active a {
-                background-color: var(--enso-filter-active-surface);
+                background-color: var(--enso-surface);
                 border-color: transparent;
                 box-shadow:
                     0 1px 2px color-mix(in srgb, var(--bulma-text) 6%, transparent),

@@ -1,0 +1,16 @@
+:is(.vue-filter, .input-filter, .interval-filter, .date-filter, .select-filter) {
+    background-color: var(--enso-surface);
+
+    .filter-header {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        background-color: var(--enso-surface);
+        padding: 0.35rem 0 0.15rem;
+    }
+
+    .filter-wrapper {
+        background-color: var(--enso-surface);
+        border-radius: inherit;
+        padding: 0.25em;
+    }
+}

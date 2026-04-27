@@ -2,7 +2,7 @@
     <div class="input-filter p-0"
         :class="$attrs.class">
         <div v-if="!compact"
-            class="header filter-header has-text-centered px-2">
+            class="filter-header has-text-centered px-2">
             <b>{{ i18n(name) }}</b>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
@@ -63,4 +63,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./styles/vue-filter.scss"></style>
+<style lang="scss" src="./styles/field-filter.scss"></style>

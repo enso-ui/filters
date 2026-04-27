@@ -1,3 +1,5 @@
+@import './filter-shell';
+
 .date-filter {
     .tag {
         cursor: pointer;
@@ -9,6 +11,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.125rem;
+        background-color: var(--enso-page-background);
         min-height: var(--bulma-control-height);
         height: var(--bulma-control-height);
         padding: 0 0.2rem;
@@ -42,6 +45,7 @@
         .flatpickr-input,
         .input,
         .control .input {
+            background-color: var(--enso-page-background);
             border-radius: var(--bulma-radius);
         }
     }

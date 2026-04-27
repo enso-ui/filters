@@ -6,11 +6,11 @@
                     filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
                     direction, directionBindings, directionEvents, backEvents, filterEvents,
                 }">
-                <div class="header filter-header has-text-centered"
+                <div class="filter-header has-text-centered"
                     v-if="!compact">
-                    <strong>
+                    <span class="label">
                         {{ label(custom) }}
-                    </strong>
+                    </span>
                 </div>
                 <div v-tooltip="compact ? label(custom) : null"
                     class="filter-wrapper">
@@ -127,5 +127,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./styles/vue-filter.scss"></style>
 <style lang="scss" src="./styles/date-filter.scss"></style>
