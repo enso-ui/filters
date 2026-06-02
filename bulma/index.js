@@ -3,6 +3,7 @@ import InputFilter from '../src/bulma/InputFilter.vue';
 import DateFilter from '../src/bulma/DateFilter.vue';
 import VueFilter from '../src/bulma/VueFilter.vue';
 import ToggleFilter from '../src/bulma/ToggleFilter.vue';
+import RadioFilter from '../src/bulma/RadioFilter.vue';
 import SelectFilter from '../src/bulma/SelectFilter.vue';
 import BooleanFilter from '../src/bulma/BooleanFilter.vue';
 import EnsoIntervalFilter from '../src/bulma/EnsoIntervalFilter.vue';
@@ -15,5 +16,5 @@ import EnsoSelectFilter from '../src/bulma/EnsoSelectFilter.vue';
 export {
     InputFilter, IntervalFilter, EnsoIntervalFilter, DateFilter, EnsoDateFilter,
     BooleanFilter, VueFilter, ToggleFilter, EnsoFilter, EnsoToggleFilter,
-    SelectFilter, EnsoSelectFilter, EnsoInputFilter,
+    RadioFilter, SelectFilter, EnsoSelectFilter, EnsoInputFilter,
 };
