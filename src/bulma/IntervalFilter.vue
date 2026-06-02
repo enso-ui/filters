@@ -1,12 +1,12 @@
 <template>
-    <div class="interval-filter is-paddingless"
+    <div class="interval-filter p-0"
         :class="$attrs.class">
         <div v-if="!compact"
-            class="header has-text-centered has-background-light px-2">
+            class="filter-header has-text-centered px-2">
             <b>{{ i18n(name) }}</b>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
-            :class="['input-wrapper', {'has-background-light': compact}]">
+            class="filter-wrapper">
             <core-interval-filter v-bind="$attrs">
                 <template #default="{
                         modelValue, invalid, minBindings, minEvents, maxBindings,
@@ -87,21 +87,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-    .interval-filter {
-        .header {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-            padding-top: 0.5em;
-        }
-
-        .input-wrapper {
-            border-radius: inherit;
-            padding: 0.25em;
-        }
-
-        .control.has-icons-right .icon.clear-button {
-            pointer-events: all;
-        }
-    }
-</style>
+<style lang="scss" src="./styles/field-filter.scss"></style>

@@ -2,25 +2,23 @@
     <base-select-filter :class="$attrs.class"
         :compact="compact"
         :i18n="i18n"
+        :readonly="readonly"
         :name="name">
-        <vue-select v-bind="{...$attrs, class: 'select-wrapper'}"
-            :class="{'has-background-light': compact}"
-            :i18n="i18n"
-            v-tooltip="compact ? i18n(name) : null"
-            ref="select"/>
+        <template #default="{ readonly }">
+            <vue-select v-bind="$attrs"
+                :i18n="i18n"
+                :readonly
+                ref="select"/>
+        </template>
     </base-select-filter>
 </template>
 
 <script>
-import 'v-tooltip/dist/v-tooltip.css';
-import { VTooltip } from 'v-tooltip';
 import { VueSelect } from '@enso-ui/select/bulma';
 import BaseSelectFilter from './BaseSelectFilter.vue';
 
 export default {
     name: 'SelectFilter',
-
-    directives: { tooltip: VTooltip },
 
     components: { BaseSelectFilter, VueSelect },
 
@@ -38,6 +36,10 @@ export default {
         name: {
             type: String,
             default: null,
+        },
+        readonly: {
+            type: Boolean,
+            default: false,
         },
     },
 

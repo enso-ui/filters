@@ -1,17 +1,17 @@
 <template>
-    <div class="vue-filter is-paddingless">
+    <div class="vue-filter p-0">
         <div v-if="!compact && name"
-            class="header has-text-centered has-background-light px-2">
-            <strong>{{ i18n(name) }}</strong>
-            <span v-if="readonly"
-                class="icon lock has-text-muted">
-                <fa icon="lock"
-                    size="xs"/>
+            class="filter-header has-text-centered px-2">
+            <span class="label">{{ i18n(name) }}
+                <span v-if="readonly"
+                    class="icon is-small">
+                    <fa :icon="faLock"
+                        size="xs"/>
+                </span>
             </span>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
-            class="tabs-wrapper"
-            :class="{ 'has-background-light': compact }">
+            class="filter-wrapper">
             <div class="tabs is-toggle is-fullwidth filter-tabs no-scrollbars">
                 <ul>
                     <li v-for="(option, index) in options"
@@ -19,7 +19,7 @@
                         :class="cssClass(option)">
                         <a @click="update(option.value)">
                             <span v-if="icons"
-                                :class="['icon', option.class]">
+                                :class="['icon is-small', option.class]">
                                 <fa :icon="option.icon"/>
                             </span>
                             <span v-else
@@ -30,13 +30,13 @@
                         </a>
                     </li>
                     <li v-if="!hideOff"
-                        :class="{ 'is-active': emptyModel }">
+                        :class="{ 'is-active': empty }">
                         <a @click="update()">
-                            <span class="icon"
-                                :class="emptyModel
-                                    ? 'has-text-danger'
+                            <span class="icon is-small"
+                                :class="empty
+                                    ? 'has-text-dark'
                                     : 'has-text-success'">
-                                <fa icon="power-off"/>
+                                <fa :icon="faPowerOff"/>
                             </span>
                             <span v-if="!icons && offLabel"
                                 class="filter-label">
@@ -52,15 +52,10 @@
 
 <script setup>
 import 'v-tooltip/dist/v-tooltip.css';
-import {
-    computed, defineProps, defineModel, defineOptions,
-} from 'vue';
+import { computed } from 'vue';
 import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faPowerOff, faLock);
 
 defineOptions({
     directives: {
@@ -120,7 +115,7 @@ const cssClass = option => ({
         : option.value === model.value,
 });
 
-const emptyModel = computed(() => (props.multiple
+const empty = computed(() => (props.multiple
     ? model.value.length < 1
     : model.value === null));
 
@@ -153,27 +148,4 @@ const update = (value = null) => {
 };
 </script>
 
-<style lang="scss">
-    .vue-filter {
-        .header {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-            padding-top: 0.5em;
-        }
-
-        .tabs-wrapper {
-            border-radius: inherit;
-            padding: 0.25em;
-
-            .tabs {
-                height: 2.25em;
-
-                li {
-                    a {
-                        padding: 0.25em;
-                    }
-                }
-            }
-        }
-    }
-</style>
+<style lang="scss" src="./styles/filter-tabs.scss"></style>

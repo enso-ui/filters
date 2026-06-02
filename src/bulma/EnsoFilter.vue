@@ -1,5 +1,6 @@
 <template>
-    <vue-filter :i18n="i18n"/>
+    <vue-filter class="enso-filter"
+        :i18n="i18n"/>
 </template>
 
 <script setup>

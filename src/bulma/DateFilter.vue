@@ -1,48 +1,50 @@
 <template>
-    <div class="date-filter is-paddingless"
+    <div class="date-filter p-0"
         :class="$attrs.class">
         <core-date-filter v-bind="$attrs">
             <template #default="{
                     filters, filter, custom, minBindings, minEvents, maxBindings, maxEvents,
                     direction, directionBindings, directionEvents, backEvents, filterEvents,
                 }">
-                <div class="header has-text-centered has-background-light px-2"
+                <div class="filter-header has-text-centered"
                     v-if="!compact">
-                    <strong>
+                    <span class="label">
                         {{ label(custom) }}
-                    </strong>
+                    </span>
                 </div>
                 <div v-tooltip="compact ? label(custom) : null"
-                    class="filter-wrapper"
-                    :class="{ 'has-background-light': compact }">
+                    class="filter-wrapper">
                     <fade mode="out-in">
                         <div class="tags-wrapper has-text-centered"
                             key="tags"
                             v-if="!custom">
                             <div class="filter-tags">
-                                <span v-if="direction">
+                                <span v-if="direction"
+                                    class="direction-wrapper px-2">
                                     <vue-switch v-bind="directionBindings"
                                         class="is-small direction"
                                         v-on="directionEvents"/>
                                 </span>
-                                <span class="tag"
-                                    :class="{ 'is-warning': filter === key }"
-                                    v-for="(type, key) in filters"
-                                    :key="key"
-                                    v-on="filterEvents(key)">
-                                    {{ i18n(type) }}
-                                </span>
+                                <div class="presets-wrapper">
+                                    <span class="tag"
+                                        :class="{ 'is-active': filter === key }"
+                                        v-for="(type, key) in filters"
+                                        :key="key"
+                                        v-on="filterEvents(key)">
+                                        {{ i18n(type) }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div v-else
                             key="dates"
-                            class="dates-wrapper animated">
+                            class="dates-wrapper animate__animated">
                             <div class="columns is-mobile is-variable is-0 is-centered">
                                 <div class="column is-narrow">
-                                    <a class="button is-naked p-2">
+                                    <a class="button is-naked px-3">
                                         <span class="icon is-small"
                                             v-on="backEvents">
-                                            <fa icon="arrow-left"
+                                            <fa :icon="faArrowLeft"
                                                 size="sm"/>
                                         </span>
                                     </a>
@@ -74,14 +76,11 @@
 import 'v-tooltip/dist/v-tooltip.css';
 import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Datepicker } from '@enso-ui/datepicker/bulma';
 import { Fade } from '@enso-ui/transitions';
 import VueSwitch from '@enso-ui/switch/bulma';
 import CoreDateFilter from '../renderless/CoreDateFilter.vue';
-
-library.add(faArrowLeft);
 
 export default {
     name: 'DateFilter',
@@ -115,6 +114,10 @@ export default {
         },
     },
 
+    data: () => ({
+        faArrowLeft,
+    }),
+
     methods: {
         label(custom) {
             return `${custom ? this.i18n('Between') : this.i18n('When')}
@@ -124,37 +127,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-    .date-filter {
-        .header {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-            padding-top: 0.5em;
-        }
-
-        .control {
-            max-width: 13.3em;
-        }
-
-        .tag {
-            cursor: pointer;
-            margin: 2px;
-        }
-
-        .filter-wrapper {
-            border-radius: inherit;
-            padding: 0.25em;
-        }
-
-        .tags-wrapper {
-            .filter-tags {
-                min-height: 2.25em;
-                padding: 0.2em;
-
-                .direction {
-                    vertical-align: middle;
-                }
-            }
-        }
-    }
-</style>
+<style lang="scss" src="./styles/date-filter.scss"></style>

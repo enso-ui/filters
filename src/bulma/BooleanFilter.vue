@@ -1,14 +1,12 @@
 <template>
-    <vue-filter icons
+    <vue-filter class="boolean-filter"
+        icons
         :options="options"/>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import VueFilter from './VueFilter.vue';
-
-library.add(faCheck, faTimes);
 
 export default {
     name: 'BooleanFilter',
@@ -25,11 +23,11 @@ export default {
     data: v => ({
         options: [{
             value: v.numeric ? 1 : true,
-            icon: 'check',
+            icon: faCheck,
             class: 'has-text-success',
         }, {
             value: v.numeric ? 0 : false,
-            icon: 'times',
+            icon: faTimes,
             class: 'has-text-danger',
         }],
     }),

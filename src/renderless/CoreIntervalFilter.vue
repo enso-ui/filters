@@ -34,8 +34,15 @@ export default {
     },
 
     methods: {
-        update() {
-            this.$emit('update:modelValue', this.modelValue);
+        updateMin(min) {
+            this.$emit('update:modelValue', {
+                ...this.modelValue, min
+            });
+        },
+        updateMax(max) {
+            this.$emit('update:modelValue', {
+                ...this.modelValue, max
+            });
         },
     },
 
@@ -44,36 +51,22 @@ export default {
             invalid: this.invalid,
             modelValue: this.modelValue,
             minBindings: {
-                modelValue: this.modelValue.min,
-                type: this.type,
+                value: this.modelValue.min,
             },
             minEvents: {
-                input: e => {
-                    this.modelValue.min = e.target.value;
-                    this.update();
-                },
+                input: e => this.updateMin(e.target.value),
             },
             maxBindings: {
-                modelValue: this.modelValue.max,
-                type: this.type,
+                value: this.modelValue.max,
             },
             maxEvents: {
-                input: e => {
-                    this.modelValue.max = e.target.value;
-                    this.update();
-                },
+                input: e => this.updateMax(e.target.value),
             },
             minClearEvents: {
-                click: () => {
-                    this.modelValue.min = null;
-                    this.update();
-                },
+                click: () => this.updateMin(null),
             },
             maxClearEvents: {
-                click: () => {
-                    this.modelValue.max = null;
-                    this.update();
-                },
+                click: () => this.updateMax(null),
             },
         });
     },

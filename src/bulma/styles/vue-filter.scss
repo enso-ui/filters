@@ -1,0 +1,42 @@
+:is(.vue-filter, .input-filter, .interval-filter, .date-filter) {
+    background-color: var(--enso-surface);
+
+    .filter-header {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        background-color: var(--enso-surface);
+
+        padding: 0.35rem 0 0.15rem;
+    }
+
+    .filter-wrapper {
+        background-color: var(--enso-surface);
+        border-radius: inherit;
+        padding: 0.25em;
+    }
+
+    :is(.tabs, .filter-tags) {
+        background-color: var(--enso-page-background);
+        box-shadow: none;
+    }
+
+    :is(.input, .textarea, .flatpickr-input.input),
+    .select select {
+        background-color: var(--enso-page-background);
+    }
+
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
+    }
+
+    .vue-dropdown {
+        --enso-select-trigger-surface: var(--enso-page-background);
+    }
+}
+
+.input-filter,
+.interval-filter {
+    .filter-wrapper .input.control {
+        border-radius: var(--bulma-radius);
+    }
+}
