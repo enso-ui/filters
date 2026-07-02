@@ -3,7 +3,7 @@
         :class="$attrs.class">
         <div v-if="!compact"
             class="filter-header has-text-centered px-2">
-            <b>{{ i18n(name) }}</b>
+            <span class="label">{{ i18n(name) }}</span>
         </div>
         <div v-tooltip="compact ? i18n(name) : null"
             class="filter-wrapper">
